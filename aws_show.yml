@@ -1,0 +1,171 @@
+---
+
+- name: Get nodes from Inventory and add to Groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - include_role: 
+      name: utils_hosts_aws
+
+
+- name: Show Cisco Command parsing
+  hosts: cisco
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: ios
+    ansible_command_timeout: 300
+  tasks:
+    # https://github.com/networktocode/ntc-templates/tree/master/ntc_templates/templates
+    - name: Capture and parse 'show interface' ntc_templates
+      ansible.utils.cli_parse:
+        command: "show interface"
+        parser:
+          name: ansible.netcommon.ntc_templates
+      register: _int_result
+    - name: Debug 'show interface' ntc_templates
+      debug:
+        var: _int_result.parsed
+
+    - name: Capture and parse 'show vlan' ntc_templates
+      ansible.utils.cli_parse:
+        command: "show vlan"
+        parser:
+          name: ansible.netcommon.ntc_templates
+      register: _int_result
+    - name: Debug 'show vlan' ntc_templates
+      debug:
+        var: _int_result.parsed
+
+    - name: Capture and parse 'show interface' textfsm
+      ansible.utils.cli_parse:
+        command: "show interface"
+        parser:
+          name: ansible.utils.textfsm
+      register: _int_result
+    - name: Debug 'show interface' textfsm
+      debug:
+        var: _int_result.parsed
+
+    # https://github.com/google/textfsm/tree/master
+    - name: Capture and parse 'show interface' textfsm with file
+      ansible.utils.cli_parse:
+        command: "show interface"
+        parser:
+          name: ansible.utils.textfsm
+          template_path: templates/ios_show_interface.textfsm
+      register: _int_result
+    - name: Debug 'show interface' textfsm with file
+      debug:
+        var: _int_result.parsed
+
+    - name: Capture and parse 'show interface' native with file
+      ansible.utils.cli_parse:
+        command: "show interface"
+        parser:
+          name: ansible.netcommon.native
+          template_path: templates/ios_show_interface.yaml
+        set_fact: _int_result native
+    - name: Debug 'show interface' native with file
+      debug:
+        var: _int_result
+
+    - name: Capture and parse 'show interface' ttp
+      ansible.utils.cli_parse:
+        command: "show interface"
+        parser:
+          name: ansible.utils.ttp
+      register: _int_result
+    - name: Debug 'show interface' ttp
+      debug:
+        var: _int_result.parsed
+
+    - name: Capture and parse 'show interface' ttp with file
+      ansible.utils.cli_parse:
+        command: "show interface"
+        parser:
+          name: ansible.utils.ttp
+          template_path: templates/ios_show_interface.ttp
+      register: _int_result
+    - name: Debug 'show interface' ttp with file
+      debug:
+        var: _int_result.parsed
+
+  # https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers
+    - name: Capture and parse 'show interface' pyats
+      ansible.utils.cli_parse:
+        command: "show interface"
+        parser:
+          name: ansible.netcommon.pyats
+      register: _int_result
+    - name: Debug 'show vlan' pyats
+      debug:
+        var: _int_result.parsed
+
+  # https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers
+    - name: Capture and parse 'show vlan' pyats
+      ansible.utils.cli_parse:
+        command: "show vlan"
+        parser:
+          name: ansible.netcommon.pyats
+      register: _int_result
+    - name: Debug 'show vlan' pyats
+      debug:
+        var: _int_result.parsed
+
+
+- name: Show Arista Command parsing
+  hosts: arista
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: eos
+    ansible_command_timeout: 300
+  tasks:
+    # https://github.com/networktocode/ntc-templates/tree/master/ntc_templates/templates
+    - name: Capture and parse 'show interface' ntc_templates
+      ansible.utils.cli_parse:
+        command: "show interface"
+        parser:
+          name: ansible.netcommon.ntc_templates
+      register: _int_result
+    - name: Debug 'show interface' ntc_templates
+      debug:
+        var: _int_result.parsed
+
+    - name: Capture and parse 'show vlan' ntc_templates
+      ansible.utils.cli_parse:
+        command: "show vlan"
+        parser:
+          name: ansible.netcommon.ntc_templates
+      register: _int_result
+    - name: Debug 'show vlan' ntc_templates
+      debug:
+        var: _int_result.parsed
+
+    # https://github.com/google/textfsm/tree/master
+    - name: Capture and parse 'show interface' textfsm with file
+      ansible.utils.cli_parse:
+        command: "show interface"
+        parser:
+          name: ansible.utils.textfsm
+          template_path: templates/ios_show_interface.textfsm
+      register: _int_result
+    - name: Debug 'show interface' textfsm with file
+      debug:
+        var: _int_result.parsed
+
+    - name: Capture and parse 'show interface' native with file
+      ansible.utils.cli_parse:
+        command: "show interface"
+        parser:
+          name: ansible.netcommon.native
+          template_path: templates/ios_show_interface.yaml
+        set_fact: _int_result native
+    - name: Debug 'show interface' native with file
+      debug:
+        var: _int_result
+

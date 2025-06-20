@@ -1,0 +1,64 @@
+---
+
+- name: Get nodes from Inventory and add to Groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - include_role: 
+      name: utils_hosts_aws
+
+
+- name: Config Arista VLANs
+  hosts: arista
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: eos
+    ansible_command_timeout: 300
+  tasks:
+    # sh vlan
+    - name: Arista EOS Config VLAN
+      arista.eos.eos_vlans:
+        config: "{{ vlans }}"
+        state: overridden
+      register: _vlan
+      become: yes
+
+    - name: Arista EOS Debug VLANs before
+      debug:
+        var: _vlan.before
+
+    - name: Arista EOS Debug VLANs command
+      debug:
+        var: _vlan.commands
+
+    - name: Arista EOS Debug VLAN after
+      debug:
+        var: _vlan.after
+
+    # sh interfaces status
+    - name: Arista EOS Add VLAN to l2 interfaces
+      arista.eos.eos_l2_interfaces:
+        config: "{{ l2_interfaces }}"
+        state: overridden
+      register: _l2_interface
+      become: true
+
+    - name: Arista EOS Debug VLAN before
+      debug:
+        var: _l2_interface.before
+
+    - name: Arista EOS Debug VLAN command
+      debug:
+        var: _l2_interface.commands
+
+    - name: Arista EOS Debug VLAN after
+      debug:
+        var: _l2_interface.after
+
+    - name: Save running to startup when modified
+      arista.eos.eos_config:
+        save_when: modified
+      become: true

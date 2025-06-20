@@ -1,0 +1,47 @@
+---
+
+- name: Get nodes from Inventory and add to Groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - include_role: 
+      name: utils_hosts_aws
+
+
+- name: Config Arista VLANs (Survey)
+  hosts: arista
+  gather_facts: false
+  vars_files: vars/main.yml
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: eos
+    ansible_command_timeout: 300
+  tasks:
+    # sh interfaces summary
+    - name: Arista EOS Config VLAN (Survey)
+      arista.eos.eos_vlans:
+        config: 
+          - name: "{{ vlan_name | default('Vlan100') }}"
+            vlan_id: "{{ vlan_id | default(100) }}"
+            state: "{{ vlan_state | default('active') }}" # active, suspend
+        state: "{{ vlan_oper | default('merged') }}"
+      register: _vlan
+      become: yes
+
+    - name: Arista EOS Debug VLAN before
+      debug:
+        var: _vlan.before
+
+    - name: Arista EOS Debug VLAN command
+      debug:
+        var: _vlan.commands
+
+    - name: Arista EOS Debug VLAN after
+      debug:
+        var: _vlan.after
+
+    - name: Save running to startup when modified
+      arista.eos.eos_config:
+        save_when: modified
+      become: true

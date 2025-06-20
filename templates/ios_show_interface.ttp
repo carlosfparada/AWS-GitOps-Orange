@@ -1,0 +1,2 @@
+{{ interface }} is {{ state }}, line protocol is {{ admin_state }}
+Description: {{ admin_state }}

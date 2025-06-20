@@ -1,0 +1,79 @@
+---
+
+- name: Get nodes from Inventory and add to Groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - include_role: 
+      name: utils_hosts_aws
+
+
+- name: Config Arista Banner
+  hosts: arista
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: eos
+    ansible_command_timeout: 300
+  tasks:
+    # sh ip name-server
+    - name: Create DNS Servers (Arista) 
+      arista.eos.eos_config:
+        lines:
+          - "ip name-server {{ item }}"
+      loop: "{{ dns_servers }}"
+      become: true
+      register: _dns_servers
+
+    - name: Arista EOS Debug DNS Servers before
+      debug:
+        var: _dns_servers.before
+
+    - name: Arista EOS Debug DNS Servers command
+      debug:
+        var: _dns_servers.commands
+
+    - name: Arista EOS Debug DNS Servers after
+      debug:
+        var: _dns_servers.after
+
+
+- name: Config Cisco Banner
+  hosts: cisco
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: ios
+    ansible_command_timeout: 300
+  tasks:
+    # sh banner login
+    - name: Create Banner (Cisco)
+      cisco.ios.ios_banner:
+        banner: login
+        text: "{{ banner.login }}"
+        state: present
+      become: true
+      register: _dns_servers
+
+    - name: Create DNS Servers (Cisco) 
+      cisco.ios.ios_config:
+        lines:
+          - "ip name-server {{ item }}"
+      loop: "{{ dns_servers }}"
+      become: true
+      register: _dns_servers
+
+    - name: Cisco IOS Debug DNS Servers before
+      debug:
+        var: _dns_servers.before
+
+    - name: Cisco IOS Debug DNS Servers command
+      debug:
+        var: _dns_servers.commands
+
+    - name: Cisco IOS Debug DNS Servers after
+      debug:
+        var: _dns_servers.after

@@ -1,0 +1,71 @@
+---
+
+- name: Get nodes from Inventory and add to Groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - include_role: 
+      name: utils_hosts_aws
+
+
+- name: Config Arista Banner
+  hosts: arista
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: eos
+    ansible_command_timeout: 300
+  tasks:
+    # sh banner login
+    - name: Create Banner (Arista)
+      arista.eos.eos_banner:
+        banner: login
+        text: "{{ banner.login }}"
+        state: present
+      become: true
+      register: _banner
+
+    - name: Arista EOS Debug Banner before
+      debug:
+        var: _banner.before
+
+    - name: Arista EOS Debug Banner command
+      debug:
+        var: _banner.commands
+
+    - name: Arista EOS Debug Banner after
+      debug:
+        var: _banner.after
+
+
+- name: Config Cisco Banner
+  hosts: cisco
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: ios
+    ansible_command_timeout: 300
+  tasks:
+    # sh banner login
+    - name: Create Banner (Cisco)
+      cisco.ios.ios_banner:
+        banner: login
+        text: "{{ banner.login }}"
+        state: present
+      become: true
+      register: _banner
+
+    - name: Cisco IOS Debug Banner before
+      debug:
+        var: _banner.before
+
+    - name: Cisco IOS Debug Banner command
+      debug:
+        var: _banner.commands
+
+    - name: Cisco IOS Debug Banner after
+      debug:
+        var: _banner.after

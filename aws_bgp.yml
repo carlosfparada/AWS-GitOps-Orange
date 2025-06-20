@@ -1,0 +1,68 @@
+---
+
+- name: Get nodes from Inventory and add to Groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - include_role: 
+      name: utils_hosts_aws
+
+
+- name: Config Arista BGP
+  hosts: arista
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: eos
+    ansible_command_timeout: 300
+  tasks:
+    # sh bgp
+    - name: Arista EOS Config BGP
+      arista.eos.eos_bgp_global:
+        config: "{{ bgp }}"
+        state: replaced
+      register: _bgp
+      become: true
+
+    - name: Arista EOS Debug BGP before
+      debug:
+        var: _bgp.before
+
+    - name: Arista EOS Debug BGP command
+      debug:
+        var: _bgp.commands
+
+    - name: Arista EOS Debug BGP after
+      debug:
+        var: _bgp.after
+
+- name: Config Cisco BGP
+  hosts: cisco
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: ios
+    ansible_command_timeout: 300
+  tasks:
+    # sh bgp
+    - name: Cisco IOS Config BGP
+      cisco.ios.ios_bgp_global:
+        config: "{{ bgp }}"
+        state: replaced
+      register: _bgp
+      become: true
+
+    - name: Cisco IOS Debug BGP before
+      debug:
+        var: _bgp.before
+
+    - name: Cisco IOS Debug BGP command
+      debug:
+        var: _bgp.commands
+
+    - name: Cisco IOS Debug BGP after
+      debug:
+        var: _bgp.after

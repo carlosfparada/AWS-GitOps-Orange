@@ -1,0 +1,24 @@
+---
+
+- name: Get nodes from Inventory and add to Groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - include_role: 
+      name: utils_hosts_aws
+
+
+- name: Ping managed hosts
+  hosts: cisco, arista 
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Debug inventory_hostname variable
+      debug:
+        msg: "Managed node: {{ inventory_hostname }}"
+  
+    - name: Ping Managed Nodes
+      ansible.builtin.ping: 
+
+  
