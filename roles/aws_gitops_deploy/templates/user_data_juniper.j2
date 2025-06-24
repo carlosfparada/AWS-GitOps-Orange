@@ -29,24 +29,6 @@ groups {
                 }
             }
         }
-        interfaces {
-            fxp0 {
-                unit 0 {
-                    family inet {
-                        address FXP0ADDR;
-                    }
-                }
-            }
-        }
-        routing-options {
-            static {
-                route 0.0.0.0/0 {
-                    next-hop GATEWAY;
-                    retain;
-                    no-readvertise;
-                }
-            }
-        }
     }
 }
 apply-groups global;
