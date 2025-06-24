@@ -82,11 +82,18 @@
           # - set groups aws-default system authentication-order password
           # - set groups aws-default security forwarding-options family mpls mode packet-based # router mode
           # - set groups aws-default security forwarding-options family iso mode packet-based # router mode
-          - "commit"
           - "exit"
           - "exit"
         '\[edit\]':
-          - commit
+          - "commit"
+          - "commit"
+          - "commit"
+          - "commit"
+          - "commit"
+          - "commit"
+          - "commit"
+          - "commit"
+          - "commit"
         'Retype new password':
           - "{{ ec2_juniper_pass }}"
         'New password':
