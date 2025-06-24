@@ -80,7 +80,8 @@
         # set system login user admin authentication plain-text-password
         # set security zones security-zone trust interfaces ge-0/0/0 host-inbound-traffic system-services ssh
         # commit
-        '{{ ec2_juniper_user }}*':
+        'ec2-user*':
+        # '{{ ec2_juniper_user }}*':
           - configure
           - set system services ssh
           - set system services ssh protocol-version v2
