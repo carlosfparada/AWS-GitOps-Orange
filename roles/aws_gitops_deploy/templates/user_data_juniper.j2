@@ -13,7 +13,6 @@ groups {
                     ssh;
                 }
                 ssh {
-                    protocol-version v2;
                     root-login allow;
                 }
                 web-management {
@@ -32,7 +31,6 @@ groups {
                     }
                 }
             }
-            authentication-order password;
             interfaces {
                 fxp0 {
                     unit 0 {
