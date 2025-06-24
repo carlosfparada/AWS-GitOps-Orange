@@ -5,6 +5,7 @@ groups {
             host-name Juniper-1;
             services {
                 ssh {
+                    protocol-version v2;
                     root-login allow;
                 }
             }
@@ -16,6 +17,7 @@ groups {
                     }
                 }
             }
+            authentication-order password;
         }
     }
 }
