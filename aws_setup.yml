@@ -83,7 +83,7 @@
         'ec2-user*>':
         # '{{ ec2_juniper_user }}*>'
           - configure
-          - request system reboot
+          # - request system reboot
         'ec2-user*#':
         # '{{ ec2_juniper_user }}*#':
           - set groups aws-default system login user ec2-user authentication plain-text-password
@@ -100,6 +100,4 @@
           - "{{ ec2_juniper_pass }}"
         'Retype new password':
           - "{{ ec2_juniper_pass }}"
-        'Reboot the system ?*'
-          - "yes"
     no_log: false # hide passwords on logs
