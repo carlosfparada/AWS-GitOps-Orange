@@ -107,3 +107,8 @@ ec2_juniper_flavor_name: c5.large
 ec2_juniper_key_name: "KeyPair-Virginia"
 # Instance
 ec2_juniper_instance_name: juniper-1
+
+# ec2-user / ?
+ec2_juniper_user: "{{ ansible_user }}"
+ec2_juniper_pass: "{{ ansible_password }}"
+

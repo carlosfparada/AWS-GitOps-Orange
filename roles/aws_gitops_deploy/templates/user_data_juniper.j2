@@ -12,7 +12,7 @@ groups {
                 user ec2-user {
                     class super-user;
                     authentication {
-                        ssh-rsa "SSHRSAKEY"; ## SECRET-DATA
+                        plain-text-password "{{ ec2_juniper_pass }}";
                     }
                 }
             }
