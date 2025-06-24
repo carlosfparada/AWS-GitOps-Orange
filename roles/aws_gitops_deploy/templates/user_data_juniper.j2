@@ -1,6 +1,6 @@
 #junos-config
 groups {
-    global {
+    aws-default {
         system {
             host-name HOSTNAME;
             services {
@@ -50,4 +50,4 @@ groups {
         }
     }
 }
-apply-groups global;
+apply-groups aws-default;
