@@ -208,7 +208,7 @@
     network_interfaces:
       - assign_public_ip: true
     volumes: "{{ ec2_juniper_volumes }}"
-    user_data: "{{ lookup('ansible.builtin.template', 'user_data_juniper.j2') }}"
+    #user_data: "{{ lookup('ansible.builtin.template', 'user_data_juniper.j2') }}"
     tags:
       name: "{{ ec2_juniper_instance_name }}"
     state: running
