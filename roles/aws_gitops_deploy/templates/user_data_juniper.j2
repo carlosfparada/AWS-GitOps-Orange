@@ -1,16 +1,31 @@
 #junos-config
 groups {
-    global {
+    aws-default {
         system {
             host-name Juniper-1;
+            scripts {
+                translation {
+                    max-datasize 512m;
+                }
+            }
             services {
+                netconf {
+                    ssh;
+                }
                 ssh {
                     protocol-version v2;
                     root-login allow;
                 }
+                web-management {
+                    https {
+                        system-generated-certificate;
+                    }
+                }
             }
             login {
                 user ec2-user {
+                    full-name juniper-aws-ec2-user;
+                    uid 100;
                     class super-user;
                     authentication {
                         plain-text-password "Admin";
@@ -18,7 +33,21 @@ groups {
                 }
             }
             authentication-order password;
+            interfaces {
+                fxp0 {
+                    unit 0 {
+                        family inet {
+                            dhcp;
+                        }
+                    }
+                }
+            }
+            license {
+                autoupdate {
+                    url https://ae1.juniper.net/junos/key_retrieval;
+                }
+            }            
         }
     }
 }
-apply-groups global;
+apply-groups aws-default;
