@@ -102,3 +102,11 @@
         'Reboot the system ?*'
           - "yes"
     no_log: false # hide passwords on logs
+
+  - name: Wait until Juniper to boot up
+    wait_for:
+      port: 22
+      state: started
+      timeout: 600
+      delay: 30
+      host: "{{ ec2_juniper_instance.instances[0].public_ip_address }}"
