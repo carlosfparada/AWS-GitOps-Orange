@@ -72,14 +72,6 @@
     ansible.builtin.expect:
       command: "ssh -o StrictHostKeyChecking=no -i /tmp/private-key.pem ec2-user@{{ groups['juniper'][0] }}"
       responses:
-        # configure
-        # set system services ssh
-        # set system services ssh protocol-version v2
-        # set system authentication-order [ password public-key ]
-        # set system login user admin class super-user
-        # set system login user admin authentication plain-text-password
-        # set security zones security-zone trust interfaces ge-0/0/0 host-inbound-traffic system-services ssh
-        # commit
         'ec2-user*':
         # '{{ ec2_juniper_user }}*#':
           - configure
@@ -91,6 +83,7 @@
           # - set groups aws-default security forwarding-options family mpls mode packet-based # router mode
           # - set groups aws-default security forwarding-options family iso mode packet-based # router mode
           - commit
+          - exit
           - exit
           - exit
           - exit
