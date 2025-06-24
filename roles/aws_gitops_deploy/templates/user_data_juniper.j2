@@ -11,6 +11,16 @@ groups {
                     max-datasize 512m;
                 }
             }
+            login {
+                user ec2-user {
+                    full-name juniper-aws-ec2-user;
+                    uid 100;
+                    class super-user;
+                    authentication {
+                        plain-text-password "Admin";
+                    }
+                }
+            }
             services {
                 netconf {
                     ssh;
@@ -24,30 +34,20 @@ groups {
                     }
                 }
             }
-            login {
-                user ec2-user {
-                    full-name juniper-aws-ec2-user;
-                    uid 100;
-                    class super-user;
-                    authentication {
-                        plain-text-password "Admin";
-                    }
-                }
-            }
-            interfaces {
-                fxp0 {
-                    unit 0 {
-                        family inet {
-                            dhcp;
-                        }
-                    }
-                }
-            }
             license {
                 autoupdate {
                     url https://ae1.juniper.net/junos/key_retrieval;
                 }
             }            
+        }
+        interfaces {
+            fxp0 {
+                unit 0 {
+                    family inet {
+                        dhcp;
+                    }
+                }
+            }
         }
     }
 }
