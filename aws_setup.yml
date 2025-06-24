@@ -81,16 +81,17 @@
         # set security zones security-zone trust interfaces ge-0/0/0 host-inbound-traffic system-services ssh
         # commit
         'ec2-user*>':
+        # '{{ ec2_juniper_user }}*>'
           - configure
           - request system reboot
         'ec2-user*#':
-        # '{{ ec2_juniper_user }}*':
+        # '{{ ec2_juniper_user }}*#':
           - set groups aws-default system login user ec2-user authentication plain-text-password
           - set groups aws-default system login user ec2-user class super-user
           - set groups aws-default system authentication-order password
           - set groups aws-default system host-name Juniper-1
-          - set groups aws-default security forwarding-options family mpls mode packet-based # router mode
-          - set groups aws-default security forwarding-options family iso mode packet-based # router mode
+          # - set groups aws-default security forwarding-options family mpls mode packet-based # router mode
+          # - set groups aws-default security forwarding-options family iso mode packet-based # router mode
           - commit
           - exit
           - exit
