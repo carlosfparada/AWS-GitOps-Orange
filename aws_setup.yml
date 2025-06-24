@@ -88,8 +88,10 @@
         '\[edit\]':
           - commit
           - commit
-        'Retype new password:':
+          - commit
+          - commit
+        'Retype new password':
           - "{{ ec2_juniper_pass }}"
-        'New password:':
+        'New password':
           - "{{ ec2_juniper_pass }}"
     no_log: false # hide passwords on logs
