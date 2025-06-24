@@ -3,6 +3,9 @@ groups {
     aws-default {
         system {
             host-name Juniper-1;
+            root-authentication {
+                encrypted-password *disabled*;
+            }
             scripts {
                 translation {
                     max-datasize 512m;
