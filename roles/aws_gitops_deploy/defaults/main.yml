@@ -18,6 +18,9 @@ ec2_cisco_eni_name2: ENI_CISCO_GITOPS2
 # Arista ENIs
 ec2_arista_eni_name1: ENI_ARISTA_GITOPS1
 ec2_arista_eni_name2: ENI_ARISTA_GITOPS2
+# Juniper ENIs
+ec2_juniper_eni_name1: ENI_JUNIPER_GITOPS1
+ec2_juniper_eni_name2: ENI_JUNIPER_GITOPS2
 # IGW
 ec2_igw_name: IGW_GITOPS
 # Route Table
