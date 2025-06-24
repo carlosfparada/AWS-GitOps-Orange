@@ -89,6 +89,8 @@
           - set system login user ec2-user class super-user
           - set system login user admin authentication plain-text-password
           - set system host-name Juniper-1
+          - set security forwarding-options family mpls mode packet-based # router mode
+          - set security forwarding-options family iso mode packet-based # router mode
           - commit
           - exit
           - exit
