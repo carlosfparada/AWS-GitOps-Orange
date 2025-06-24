@@ -109,4 +109,4 @@
       state: started
       timeout: 600
       delay: 30
-      host: "{{ ec2_juniper_instance.instances[0].public_ip_address }}"
+      host: "{{ groups['juniper'][0] }}"
