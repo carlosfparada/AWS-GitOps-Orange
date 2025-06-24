@@ -85,12 +85,12 @@
           - request system reboot
         'ec2-user*#':
         # '{{ ec2_juniper_user }}*':
-          - set system login user admin authentication plain-text-password
-          - set system login user ec2-user class super-user
-          - set system authentication-order password
-          - set system host-name Juniper-1
-          - set security forwarding-options family mpls mode packet-based # router mode
-          - set security forwarding-options family iso mode packet-based # router mode
+          - set groups aws-default system login user ec2-user authentication plain-text-password
+          - set groups aws-default system login user ec2-user class super-user
+          - set groups aws-default system authentication-order password
+          - set groups aws-default system host-name Juniper-1
+          - set groups aws-default security forwarding-options family mpls mode packet-based # router mode
+          - set groups aws-default security forwarding-options family iso mode packet-based # router mode
           - commit
           - exit
           - exit
