@@ -2,17 +2,18 @@
 groups {
     global {
         system {
-            host-name Juniper-1;
+            host-name HOSTNAME;
             services {
                 ssh {
-                    root-login allow;
+                    root-login deny-password;
                 }
             }
             login {
-                user ec2-user {
+                user jnpr {
+                    uid 2000;
                     class super-user;
                     authentication {
-                        plain-text-password "{{ ec2_juniper_pass }}";
+                        ssh-rsa "SSHRSAKEY"; ## SECRET-DATA
                     }
                 }
             }
