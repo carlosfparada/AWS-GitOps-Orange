@@ -1,54 +1,53 @@
 #junos-config
 groups {
-    aws-default {
+    global {
         system {
-            host-name Juniper-1;
-            root-authentication {
-                plain-text-password "Admin";
-            }
-            scripts {
-                translation {
-                    max-datasize 512m;
+            host-name HOSTNAME;
+            services {
+                ssh {
+                    root-login deny-password;
                 }
             }
             login {
-                user ec2-user {
-                    full-name juniper-aws-ec2-user;
-                    uid 100;
+                user jnpr {
+                    uid 2000;
                     class super-user;
                     authentication {
-                        plain-text-password "Admin";
+                        ssh-rsa "SSHRSAKEY"; ## SECRET-DATA
                     }
                 }
             }
-            services {
-                netconf {
-                    ssh;
+            syslog {
+                user * {
+                    any emergency;
                 }
-                ssh {
-                    root-login allow;
+                file messages {
+                    any notice;
+                    authorization info;
                 }
-                web-management {
-                    https {
-                        system-generated-certificate;
-                    }
+                file interactive-commands {
+                    interactive-commands any;
                 }
             }
-            license {
-                autoupdate {
-                    url https://ae1.juniper.net/junos/key_retrieval;
-                }
-            }            
         }
         interfaces {
             fxp0 {
                 unit 0 {
                     family inet {
-                        dhcp;
+                        address FXP0ADDR;
                     }
+                }
+            }
+        }
+        routing-options {
+            static {
+                route 0.0.0.0/0 {
+                    next-hop GATEWAY;
+                    retain;
+                    no-readvertise;
                 }
             }
         }
     }
 }
-apply-groups aws-default;
+apply-groups global;
