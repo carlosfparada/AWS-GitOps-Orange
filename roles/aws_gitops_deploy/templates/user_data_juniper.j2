@@ -16,18 +16,6 @@ groups {
                     }
                 }
             }
-            syslog {
-                user * {
-                    any emergency;
-                }
-                file messages {
-                    any notice;
-                    authorization info;
-                }
-                file interactive-commands {
-                    interactive-commands any;
-                }
-            }
         }
     }
 }
