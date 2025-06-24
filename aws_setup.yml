@@ -74,19 +74,17 @@
       responses:
         'ec2-user*':
         # '{{ ec2_juniper_user }}*#':
-          - configure
-          - set groups aws-default system host-name Juniper-1
-          - set groups aws-default system login user ec2-user class super-user
-          - set groups aws-default system login user ec2-user authentication plain-text-password
-          - delete groups aws-default system services ssh no-passwords
+          - "configure"
+          - "set groups aws-default system host-name Juniper-1"
+          - "set groups aws-default system login user ec2-user class super-user"
+          - "set groups aws-default system login user ec2-user authentication plain-text-password"
+          - "delete groups aws-default system services ssh no-passwords"
           # - set groups aws-default system authentication-order password
           # - set groups aws-default security forwarding-options family mpls mode packet-based # router mode
           # - set groups aws-default security forwarding-options family iso mode packet-based # router mode
-          - commit
-          - exit
-          - exit
-          - exit
-          - exit
+          - "commit"
+          - "exit"
+          - "exit"
         'Retype new password:':
           - "{{ ec2_juniper_pass }}"
         'New password:':
