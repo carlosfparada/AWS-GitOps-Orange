@@ -93,7 +93,7 @@
           - "exit"
           - "exit"
           - "exit"
-          - "exit"
+          - "commit"
           # - "commit"
           # - "exit"
         'Retype new password:':
