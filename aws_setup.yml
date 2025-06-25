@@ -88,7 +88,7 @@
           # - set groups aws-default security forwarding-options family mpls mode packet-based # router mode
           # - set groups aws-default security forwarding-options family iso mode packet-based # router mode
           - "commit"
-          - "exia"
+          - "exita"
           - "exitb"
           - "exitc"
           - "exitd"
