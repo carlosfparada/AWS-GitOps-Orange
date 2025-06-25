@@ -75,7 +75,7 @@
       var: ec2_juniper_user
 
   - debug:
-      var: ansible_password
+      msg: "{{ ansible_password }}"
 
   - debug:
       msg: "{{ ansible_user }}"
