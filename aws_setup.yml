@@ -81,10 +81,7 @@
       msg: "{{ ansible_user }}"
 
   - debug:
-      var: ec2_cisco_pass
-
-  - debug:
-      var: ansible_ssh_pass
+      var: ec2_juniper_pass
 
   - name: Set Juniper password
     ansible.builtin.expect:
