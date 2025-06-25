@@ -66,3 +66,32 @@
     - name: Cisco IOS Debug BGP after
       debug:
         var: _bgp.after
+
+- name: Config Juniper BGP
+  hosts: cisco
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: netconf
+    ansible_network_os: junos
+    ansible_command_timeout: 300
+  tasks:
+    # sh bgp
+    - name: Juniper OS Config BGP
+      junipernetworks.junos.junos_global:
+        config: "{{ bgp }}"
+        state: replaced
+      register: _bgp
+      become: true
+
+    - name: Juniper OS Debug BGP before
+      debug:
+        var: _bgp.before
+
+    - name: Juniper OS Debug BGP command
+      debug:
+        var: _bgp.commands
+
+    - name: Juniper OS Debug BGP after
+      debug:
+        var: _bgp.after
