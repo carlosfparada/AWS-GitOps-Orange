@@ -72,7 +72,13 @@
       var: ec2_juniper_pass
 
   - debug:
+      var: ec2_juniper_user
+
+  - debug:
       var: ansible_password
+
+  - debug:
+      var: ansible_user
 
   - name: Set Juniper password
     ansible.builtin.expect:
