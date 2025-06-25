@@ -73,6 +73,9 @@
       my_salt: "{{ 99999999 | random | to_uuid | regex_replace('-', '')[:16] }}"
       hashed_password: "{{ ec2_juniper_pass | password_hash('sha512', my_salt) }}"
 
+  - debug:
+      msg: "{{ ec2_juniper_pass }}"
+
   - name: Set Juniper password
     ansible.builtin.expect:
       command: "ssh -o StrictHostKeyChecking=no -i /tmp/private-key.pem ec2-user@{{ groups['juniper'][0] }}"
