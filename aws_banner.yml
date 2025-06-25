@@ -54,15 +54,23 @@
       become: true
       register: _banner
 
+    - name: Cisco IOS Debug Banner before
+      debug:
+        var: _banner.before
+
     - name: Cisco IOS Debug Banner command
       debug:
         var: _banner.commands
+
+    - name: Cisco IOS Debug Banner after
+      debug:
+        var: _banner.after
 
     - name: Save running to startup when modified
       cisco.ios.ios_config:
         save_when: modified
       become: true
-      
+
 - name: Config Juniper Banner
   hosts: juniper
   gather_facts: false
@@ -80,6 +88,19 @@
         state: present
       become: true
       register: _banner
+
+
+    - name: Juniper OS Debug Banner before
+      debug:
+        var: _banner.before
+
+    - name: Juniper OS Debug Banner command
+      debug:
+        var: _banner.commands
+
+    - name: Juniper OS Debug Banner after
+      debug:
+        var: _banner.after
 
     - name: Check Juniper OS correctness of commit configuration
       junipernetworks.junos.junos_config:
