@@ -73,7 +73,7 @@
       command: "ssh -o StrictHostKeyChecking=no -i /tmp/private-key.pem ec2-user@{{ groups['juniper'][0] }}"
       responses:
         # '*ec2-user@Juniper-1':
-        '(.*)ec2-user>':
+        '(.*)ec2-user@Juniper-1>':
           - "configure"
         # '(.*)ec2-user#':
         # '*ec2-user@Juniper-1#':
