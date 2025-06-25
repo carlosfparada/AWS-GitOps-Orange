@@ -113,8 +113,21 @@
     #   debug:
     #     var: _l2_interface_juniper.after
 
-    - name: Save running to startup when modified
+    - name: Save Juniper OS running to startup when modified
       arista.eos.eos_config:
         save_when: modified
       become: true
 
+    - name: Check Juniper OS correctness of commit configuration
+      junipernetworks.junos.junos_config:
+        check_commit: true
+      become: true
+
+    # - name: Rollback Juniper OS configuration to id 10
+    #   junipernetworks.junos.junos_config:
+    #     rollback: 10
+
+    - name: Confirm previous Juniper OS commit
+      junipernetworks.junos.junos_config:
+        confirm_commit: true
+      become: true
