@@ -69,7 +69,7 @@
   #   no_log: false # hide passwords on logs
 
   - ansible.builtin.set_fact:
-      my_salt: "{{ 99999999 | random | to_uuid | regex_replace('-', '') }}"
+      my_salt: "{{ 99999999 | random | to_uuid | regex_replace('-', '')[0:16] }}"
 
   - ansible.builtin.set_fact:
       hashed_password: "{{ ec2_juniper_pass | password_hash('sha512', my_salt) }}"
