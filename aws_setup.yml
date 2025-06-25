@@ -78,20 +78,20 @@
         # '(.*)ec2-user#':
         # '*ec2-user@Juniper-1#':
         #   - "set groups aws-default system host-name Juniper-1"
-        '*ec2-user@Juniper-1#':
-          - "set groups aws-default system login user ec2-user class super-user"
-          - "set groups aws-default system services ssh no-passwords"
-          - "delete groups aws-default system services ssh no-passwords"
-          # - "set groups aws-default system login user ec2-user authentication plain-text-password"
-          # - set groups aws-default system authentication-order password
-          # - set groups aws-default security forwarding-options family mpls mode packet-based # router mode
-          # - set groups aws-default security forwarding-options family iso mode packet-based # router mode
-          - "commit"
-          - "exit"
-          - "exit"
-          - "exit"
-        '*Retype new password:':
-          - "{{ ec2_juniper_pass }}"
-        '*New password:':
-          - "{{ ec2_juniper_pass }}"
+        # '*ec2-user@Juniper-1#':
+        #   - "set groups aws-default system login user ec2-user class super-user"
+        #   - "set groups aws-default system services ssh no-passwords"
+        #   - "delete groups aws-default system services ssh no-passwords"
+        #   # - "set groups aws-default system login user ec2-user authentication plain-text-password"
+        #   # - set groups aws-default system authentication-order password
+        #   # - set groups aws-default security forwarding-options family mpls mode packet-based # router mode
+        #   # - set groups aws-default security forwarding-options family iso mode packet-based # router mode
+        #   - "commit"
+        #   - "exit"
+        #   - "exit"
+        #   - "exit"
+        # '*Retype new password:':
+        #   - "{{ ec2_juniper_pass }}"
+        # '*New password:':
+        #   - "{{ ec2_juniper_pass }}"
     no_log: false # hide passwords on logs
