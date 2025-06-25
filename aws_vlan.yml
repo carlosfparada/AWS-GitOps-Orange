@@ -89,6 +89,10 @@
       debug:
         var: _vlan.commands
 
+    - name: Juniper OS Debug VLANs before
+      debug:
+        var: _vlan.after
+
     # sh groups aws-default interfaces
     - name: Juniper OS Add VLAN to l2 interfaces
       junipernetworks.junos.junos_l2_interfaces:
@@ -104,6 +108,10 @@
     - name: Juniper OS Debug VLAN command
       debug:
         var: _l2_interface_juniper.commands
+
+    - name: Juniper OS Debug VLAN before
+      debug:
+        var: _l2_interface_juniper.after
 
     - name: Check Juniper OS correctness of commit configuration
       junipernetworks.junos.junos_config:
