@@ -80,6 +80,9 @@
   - debug:
       var: ansible_user
 
+  - debug:
+      var: ec2_cisco_pass
+
   - name: Set Juniper password
     ansible.builtin.expect:
       command: "ssh -o StrictHostKeyChecking=no -i /tmp/private-key.pem ec2-user@{{ groups['juniper'][0] }}"
