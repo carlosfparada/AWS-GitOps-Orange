@@ -69,7 +69,7 @@
   #   no_log: false # hide passwords on logs
 
   - debug:
-      var: ec2_juniper_pass
+      msg: "{{ ec2_juniper_pass }}"
 
   - debug:
       var: ec2_juniper_user
@@ -78,7 +78,7 @@
       var: ansible_password
 
   - debug:
-      var: ansible_user
+      msg: "{{ ansible_user }}"
 
   - debug:
       var: ec2_cisco_pass
