@@ -2,7 +2,7 @@
 # CMDB #
 ########
 
-# Arista (show vlan)
+# Arista & Juniper (show vlan ; show)
 vlans:
   - name: Vlan_1
     vlan_id: 1
@@ -32,7 +32,7 @@ l2_interfaces_arista:
       vlan: 1
       # vlan: 20
 
-# Juniper (show interfaces)
+# Juniper (show ; show interfaces)
 l2_interfaces_juniper:
   - name: ge-0/0/0
     access:
@@ -52,7 +52,7 @@ l3_interfaces_cisco:
     ipv4:
       - address: 10.13.13.13/24
 
-# Juniper (show interface)
+# Juniper (show ; show interface)
 l3_interfaces_juniper:
   - name: gr-0/0/0
     ipv4:
@@ -74,6 +74,20 @@ bgp:
   timers:
     keepalive: 1000
     holdtime: 200
+
+# Juniper (show ; show bgp)
+bgp_juniper:
+  config:
+    as_number: "45000"
+    neighbors:
+      neighbor: 
+      - neighbor_address: 192.168.1.11
+        local_as:
+          as_num: '12000'
+      - neighbor_address: 192.168.1.12
+        local_as:
+          as_num: '12000'
+    hold_time: 200
 
 # Arista & Cisco (show banner login)
 banner:
