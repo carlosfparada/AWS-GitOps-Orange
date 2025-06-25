@@ -92,7 +92,7 @@ bgp_juniper:
 banner:
   login: "This is my Login Banner, set by Ansible GitOps v2"
 
-# Arista & Cisco (show ip name-server)
+# Arista & Cisco (show ip name-server) & Juniper (show system name-server)
 dns_servers: 
   - 8.8.8.8
   - 8.8.8.9
