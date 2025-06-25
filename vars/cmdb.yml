@@ -32,6 +32,18 @@ l2_interfaces:
       vlan: 1
       # vlan: 20
 
+l2_interfaces_juniper:
+  - name: Ethernet2
+    mode: access
+    access:
+      vlan: 1
+      # vlan: 10
+  - name: Ethernet3
+    mode: access
+    access:
+      vlan: 1
+      # vlan: 20
+
 # Cisco (show ip interface brief)
 l3_interfaces:
   - name: GigabitEthernet2
