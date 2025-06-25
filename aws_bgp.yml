@@ -76,9 +76,9 @@
       cisco.ios.ios_config:
         save_when: modified
       become: true
-      
+
 - name: Config Juniper BGP
-  hosts: cisco
+  hosts: juniper
   gather_facts: false
   vars_files: vars/cmdb.yml
   vars:
