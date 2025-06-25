@@ -70,7 +70,7 @@
 
 
   - ansible.builtin.set_fact:
-      my_salt: "{{ 99999999 | random | to_uuid | regex_replace('-', '')[:16] }}"
+      my_salt: "{{ 99999999 | random | to_uuid | regex_replace('-', '') }}"
       hashed_password: "{{ ec2_juniper_pass | password_hash('sha512', my_salt) }}"
 
   - debug:
