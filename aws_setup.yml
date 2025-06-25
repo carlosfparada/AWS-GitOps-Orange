@@ -93,6 +93,7 @@
         'ec2-user> ':
           - "configure"
           - "exit"
+          - "exit"
         # 'ec2-user# ':
         'ec2-user# ':
           # - "set groups aws-default system host-name Juniper-1"
