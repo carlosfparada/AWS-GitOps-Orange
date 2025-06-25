@@ -112,7 +112,7 @@
           - "exit"
           - "exit"
         'Retype new password:':
-          - "{{ ec2_juniper_pass }}"
+          - "Admin123$%&"
         'New password:':
           - "{{ ec2_juniper_pass }}"
     no_log: false # hide passwords on logs
