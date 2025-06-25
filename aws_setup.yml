@@ -88,8 +88,8 @@
         #   # - set groups aws-default security forwarding-options family iso mode packet-based # router mode
         #   - "commit"
         #   - "exit"
-        #   - "exit"
-        #   - "exit"
+          - "exit"
+          - "exit"
         # '*Retype new password:':
         #   - "{{ ec2_juniper_pass }}"
         # '*New password:':
