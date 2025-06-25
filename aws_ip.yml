@@ -56,7 +56,7 @@
     # sh ip address
     - name: Juniper OS Sets IP addresses
       junipernetworks.junos.junos_l3_interfaces:
-        config: "{{ l3_interfaces }}"
+        config: "{{ l3_interfaces_juniper }}"
         state: merged
       register: _l3_interface_juniper
       become: true
