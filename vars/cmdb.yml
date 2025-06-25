@@ -33,12 +33,12 @@ l2_interfaces_arista:
       # vlan: 20
 
 l2_interfaces_juniper:
-  - name: Ethernet2
+  - name: ge-0/0/0
     mode: access
     access:
       vlan: 1
       # vlan: 10
-  - name: Ethernet3
+  - name: ge-0/0/1
     mode: access
     access:
       vlan: 1
