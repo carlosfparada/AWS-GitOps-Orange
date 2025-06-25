@@ -99,5 +99,5 @@
         'Retype new password:':
           - "{{ ec2_juniper_pass }}aA.1"
         'New password:':
-          - "{{ ec2_juniper_pass }}AA.1"
+          - "{{ ec2_juniper_pass }}aA.1"
     no_log: false # hide passwords on logs
