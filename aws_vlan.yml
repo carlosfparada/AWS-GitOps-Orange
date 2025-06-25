@@ -58,7 +58,7 @@
       debug:
         var: _l2_interface.after
 
-    - name: Save running to startup when modified
+    - name: Save Arista EOS running to startup when modified
       arista.eos.eos_config:
         save_when: modified
       become: true
@@ -75,7 +75,7 @@
   tasks:
     # sh vlan
     - name: Juniper OS Config VLAN
-      arista.eos.eos_vlans:
+      junipernetworks.junos.junos_vlans:
         config: "{{ vlans }}"
         state: overridden
       register: _vlan
@@ -94,24 +94,24 @@
         var: _vlan.after
 
     # # sh interfaces status
-    # - name: Arista EOS Add VLAN to l2 interfaces
-    #   arista.eos.eos_l2_interfaces:
-    #     config: "{{ l2_interfaces }}"
+    # - name: Juniper OS Add VLAN to l2 interfaces
+    #   junipernetworks.junos.junos_l2_interfaces:
+    #     config: "{{ l2_interfaces_juniper }}"
     #     state: overridden
-    #   register: _l2_interface
+    #   register: _l2_interface_juniper
     #   become: true
 
-    # - name: Arista EOS Debug VLAN before
+    # - name: Juniper OS Debug VLAN before
     #   debug:
-    #     var: _l2_interface.before
+    #     var: _l2_interface_juniper.before
 
-    # - name: Arista EOS Debug VLAN command
+    # - name: Juniper OS Debug VLAN command
     #   debug:
-    #     var: _l2_interface.commands
+    #     var: _l2_interface_juniper.commands
 
-    # - name: Arista EOS Debug VLAN after
+    # - name: Juniper OS Debug VLAN after
     #   debug:
-    #     var: _l2_interface.after
+    #     var: _l2_interface_juniper.after
 
     - name: Save running to startup when modified
       arista.eos.eos_config:
