@@ -20,7 +20,7 @@ vlans:
   #   vlan_id: 104
 
 # Arista (show interfaces status)
-l2_interfaces:
+l2_interfaces_arista:
   - name: Ethernet2
     mode: access
     access:

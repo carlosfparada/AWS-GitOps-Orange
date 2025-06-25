@@ -41,22 +41,22 @@
     # sh interfaces status
     - name: Arista EOS Add VLAN to l2 interfaces
       arista.eos.eos_l2_interfaces:
-        config: "{{ l2_interfaces }}"
+        config: "{{ l2_interfaces_arista }}"
         state: overridden
-      register: _l2_interface
+      register: _l2_interface_arista
       become: true
 
     - name: Arista EOS Debug VLAN before
       debug:
-        var: _l2_interface.before
+        var: _l2_interface_arista.before
 
     - name: Arista EOS Debug VLAN command
       debug:
-        var: _l2_interface.commands
+        var: _l2_interface_arista.commands
 
     - name: Arista EOS Debug VLAN after
       debug:
-        var: _l2_interface.after
+        var: _l2_interface_arista.after
 
     - name: Save Arista EOS running to startup when modified
       arista.eos.eos_config:
