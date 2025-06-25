@@ -80,8 +80,8 @@ bgp_juniper:
   as_number: "45000"
   groups:
     - name: Group_AWS
-      local_as:
-        as_num: '45000'
+      # local_as:
+      #   as_num: '45000'
       neighbors: 
         - neighbor_address: 192.168.1.11
           local_as:
