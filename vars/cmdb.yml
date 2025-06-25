@@ -52,7 +52,7 @@ l3_interfaces_cisco:
     ipv4:
       - address: 10.13.13.13/24
 
-# Cisco (show ip interface brief)
+# Juniper (show interface)
 l3_interfaces_juniper:
   - name: gr-0/0/0
     ipv4:
