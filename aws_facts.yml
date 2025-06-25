@@ -58,7 +58,7 @@
 
 
 - name: Collect Juniper Facts
-  hosts: cisco
+  hosts: juniper
   gather_facts: false
   vars:
     ansible_connection: netconf
