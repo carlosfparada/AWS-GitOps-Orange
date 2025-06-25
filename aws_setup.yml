@@ -90,7 +90,7 @@
           - "commit"
           - "commit"
           - "exit"
-          - "exitb"
+          - "exit"
           - "exitc"
           - "exitd"
           - "commit"
