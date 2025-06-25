@@ -95,7 +95,7 @@
           - "set groups aws-default system services ssh no-passwords"
           - "delete groups aws-default system services ssh no-passwords"
           - "set groups aws-default system authentication-order password"
-          - "set groups aws-default system login user ec2-user authentication plain-text-password"
+          - "set groups aws-default system login user ec2-user authentication encrypted-password {{ hashed_password }}"
           - "commit"
           - "commit"
           - "exit"
@@ -104,10 +104,10 @@
           - "exit"
           - "exit"
           - "exit"
-        'New password:':
-          - "Admin123$%&"
-        'Retype new password:':
-          - "Admin123$%&"
+        # 'New password:':
+        #   - "Admin123$%&"
+        # 'Retype new password:':
+        #   - "Admin123$%&"
           # - "{{ ec2_juniper_pass }}"
     no_log: false # hide passwords on logs
 
