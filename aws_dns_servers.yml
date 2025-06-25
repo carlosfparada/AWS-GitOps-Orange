@@ -27,6 +27,18 @@
       become: true
       register: _dns_servers
 
+    - name: Arista EOS Debug DNS Servers before
+      debug:
+        var: _dns_servers.before
+
+    - name: Arista EOS Debug DNS Servers command
+      debug:
+        var: _dns_servers.commands
+
+    - name: Arista EOS Debug DNS Servers after
+      debug:
+        var: _dns_servers.after
+
     - name: Save Arista EOS running to startup when modified
       arista.eos.eos_config:
         save_when: modified
@@ -49,6 +61,18 @@
       become: true
       register: _dns_servers
 
+    - name: Cisco IOS Debug DNS Servers before
+      debug:
+        var: _dns_servers.before
+
+    - name: Cisco IOS Debug DNS Servers command
+      debug:
+        var: _dns_servers.commands
+
+    - name: Cisco IOS Debug DNS Servers after
+      debug:
+        var: _dns_servers.after
+
     - name: Save running to startup when modified
       cisco.ios.ios_config:
         save_when: modified
@@ -70,6 +94,18 @@
       loop: "{{ dns_servers }}"
       become: true
       register: _dns_servers
+
+    - name: Juniper OS Debug DNS Servers before
+      debug:
+        var: _dns_servers.before
+
+    - name: Juniper OS Debug DNS Servers command
+      debug:
+        var: _dns_servers.commands
+
+    - name: Juniper OS Debug DNS Servers after
+      debug:
+        var: _dns_servers.after
 
     - name: Check Juniper OS correctness of commit configuration
       junipernetworks.junos.junos_config:
