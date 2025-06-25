@@ -68,23 +68,12 @@
   #         - exit
   #   no_log: false # hide passwords on logs
 
-  - debug:
+  - ansible.builtin.debug:
       msg: "A {{ ec2_juniper_pass }} A"
 
-  - debug:
-      var: ec2_juniper_user
-
-  - debug:
-      msg: "{{ ansible_password }}"
-
-  - debug:
-      msg: "{{ ansible_user }}"
-
-  - debug:
-      var: ec2_juniper_pass
-
-  - debug:
-      var: ec2_juniper_user
+  - ansible.builtin.set_fact:
+      my_salt: "{{ 99999999 | random | to_uuid | regex_replace('-', '')[:16] }}"
+      hashed_password: "{{ my_password | password_hash('sha512', my_salt) }}"
 
   - name: Set Juniper password
     ansible.builtin.expect:
