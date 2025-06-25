@@ -89,7 +89,6 @@
       become: true
       register: _banner
 
-
     - name: Juniper OS Debug Banner before
       debug:
         var: _banner.before
