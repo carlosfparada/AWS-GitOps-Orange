@@ -34,12 +34,10 @@ l2_interfaces_arista:
 
 l2_interfaces_juniper:
   - name: ge-0/0/0
-    mode: access
     access:
       vlan: 1
       # vlan: 10
   - name: ge-0/0/1
-    mode: access
     access:
       vlan: 1
       # vlan: 20
