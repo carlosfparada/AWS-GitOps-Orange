@@ -114,7 +114,8 @@
         'Retype new password:':
           - "Admin123$%&"
         'New password:':
-          - "{{ ec2_juniper_pass }}"
+          - "Admin123$%&"
+          # - "{{ ec2_juniper_pass }}"
     no_log: false # hide passwords on logs
 
           # - set groups aws-default security forwarding-options family mpls mode packet-based # router mode
