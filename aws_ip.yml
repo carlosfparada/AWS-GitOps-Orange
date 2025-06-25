@@ -45,7 +45,7 @@
 
 
 - name: Config Juniper IPs
-  hosts: cisco
+  hosts: juniper
   gather_facts: false
   vars_files: vars/cmdb.yml
   vars:
