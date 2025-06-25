@@ -113,11 +113,6 @@
     #   debug:
     #     var: _l2_interface_juniper.after
 
-    - name: Save Juniper OS running to startup when modified
-      arista.eos.eos_config:
-        save_when: modified
-      become: true
-
     - name: Check Juniper OS correctness of commit configuration
       junipernetworks.junos.junos_config:
         check_commit: true
