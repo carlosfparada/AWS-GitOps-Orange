@@ -94,6 +94,7 @@
           - "exit"
           - "exit"
           - "commit"
+          - "exit"
           # - "commit"
           # - "exit"
         'Retype new password:':
