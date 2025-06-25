@@ -2,7 +2,7 @@
 # CMDB #
 ########
 
-# Arista & Juniper (show vlan ; show)
+# Arista (show vlan) & Juniper (show)
 vlans:
   - name: Vlan_1
     vlan_id: 1
