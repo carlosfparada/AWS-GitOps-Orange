@@ -44,15 +44,22 @@ l2_interfaces_juniper:
       # vlan: 20
 
 # Cisco (show ip interface brief)
-l3_interfaces:
+l3_interfaces_cisco:
   - name: GigabitEthernet2
     ipv4:
     - address: 10.12.12.12/24
-    # - address: 10.14.14.14/24
   - name: VirtualPortGroup0
     ipv4:
       - address: 10.13.13.13/24
-      # - address: 10.15.15.15/24
+
+# Cisco (show ip interface brief)
+l3_interfaces_juniper:
+  - name: gr-0/0/0
+    ipv4:
+    - address: 10.14.14.14/24
+  - name: gr-0/0/0
+    ipv4:
+      - address: 10.15.15.15/24
 
 # Arista & Cisco (sh running-config | section bgp)
 bgp:
