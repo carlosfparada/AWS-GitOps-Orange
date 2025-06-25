@@ -94,9 +94,9 @@
           - "exit"
           - "exit"
         'Retype new password:':
-          - "{{ ec2_juniper_pass }}"
+          - "{{ ec2_juniper_pass }}Ab1.B!"
         'New password:':
-          - "{{ ec2_juniper_pass }}"
+          - "{{ ec2_juniper_pass }}Ab1.B!"
     no_log: false # hide passwords on logs
 
           # - set groups aws-default security forwarding-options family mpls mode packet-based # router mode
