@@ -74,12 +74,6 @@
   - ansible.builtin.set_fact:
       hashed_password: "{{ ec2_juniper_pass | password_hash('sha512', my_salt) }}"
 
-  - debug:
-      msg: "{{ hashed_password }}"
-
-  - debug:
-      msg: "{{ ec2_juniper_pass }}"
-
   - name: Set Juniper password
     ansible.builtin.expect:
       command: "ssh -o StrictHostKeyChecking=no -i /tmp/private-key.pem ec2-user@{{ groups['juniper'][0] }}"
@@ -110,7 +104,6 @@
         #   - "Admin123$%&"
         # 'Retype new password:':
         #   - "Admin123$%&"
-          # - "{{ ec2_juniper_pass }}"
     no_log: false # hide passwords on logs
 
           # - set groups aws-default security forwarding-options family mpls mode packet-based # router mode
