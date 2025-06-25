@@ -69,3 +69,34 @@
     - name: Cisco IOS Debug Banner after
       debug:
         var: _banner.after
+
+
+- name: Config Juniper Banner
+  hosts: juniper
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: netconf
+    ansible_network_os: junos
+    ansible_command_timeout: 300
+  tasks:
+    # sh banner login
+    - name: Create Banner (Juniper)
+      junipernetworks.junos.junos_banner:
+        banner: login
+        text: "{{ banner.login }}"
+        state: present
+      become: true
+      register: _banner
+
+    - name: Juniper OS Debug Banner before
+      debug:
+        var: _banner.before
+
+    - name: Juniper OS Debug Banner command
+      debug:
+        var: _banner.commands
+
+    - name: Juniper OS Debug Banner after
+      debug:
+        var: _banner.after
