@@ -54,7 +54,7 @@
     ansible_command_timeout: 300
   tasks:
     - name: Create DNS Servers (Cisco) 
-      junipernetworks.junos.junos_config:
+      cisco.ios.ios_config:
         lines:
           - "ip name-server {{ item }}"
       loop: "{{ dns_servers }}"
@@ -77,7 +77,7 @@
       cisco.ios.ios_config:
         save_when: modified
       become: true
-      
+
 - name: Config Juniper DNS Servers
   hosts: juniper
   gather_facts: false
@@ -88,9 +88,9 @@
     ansible_command_timeout: 300
   tasks:
     - name: Create DNS Servers (Juniper) 
-      cisco.ios.ios_config:
+      junipernetworks.junos.junos_config:
         lines:
-          - "ip name-server {{ item }}"
+          - "set system name-server {{ item }}"
       loop: "{{ dns_servers }}"
       become: true
       register: _dns_servers
