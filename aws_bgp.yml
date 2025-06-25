@@ -79,19 +79,19 @@
     # sh bgp
     - name: Juniper OS Config BGP
       junipernetworks.junos.junos_bgp_global:
-        config: "{{ bgp }}"
+        config: "{{ bgp_juniper }}"
         state: replaced
-      register: _bgp
+      register: _bgp_juniper
       become: true
 
     - name: Juniper OS Debug BGP before
       debug:
-        var: _bgp.before
+        var: _bgp_juniper.before
 
     - name: Juniper OS Debug BGP command
       debug:
-        var: _bgp.commands
+        var: _bgp_juniper.commands
 
     - name: Juniper OS Debug BGP after
       debug:
-        var: _bgp.after
+        var: _bgp_juniper.after
