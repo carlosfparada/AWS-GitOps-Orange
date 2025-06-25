@@ -92,6 +92,7 @@
           - "exit"
           - "exit"
           - "exit"
+          - "exit"
         'Retype new password:':
           - "{{ ec2_juniper_pass }}"
         'New password:':
