@@ -77,17 +77,16 @@ bgp:
 
 # Juniper (show ; show bgp)
 bgp_juniper:
-  config:
-    as_number: "45000"
-    neighbors:
-      neighbor: 
-      - neighbor_address: 192.168.1.11
-        local_as:
-          as_num: '12000'
-      - neighbor_address: 192.168.1.12
-        local_as:
-          as_num: '12000'
-    hold_time: 200
+  as_number: "45000"
+  neighbors:
+    neighbor: 
+    - neighbor_address: 192.168.1.11
+      local_as:
+        as_num: '12000'
+    - neighbor_address: 192.168.1.12
+      local_as:
+        as_num: '12000'
+  hold_time: 200
 
 # Arista & Cisco (show banner login)
 banner:
