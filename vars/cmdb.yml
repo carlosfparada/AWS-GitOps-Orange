@@ -83,12 +83,12 @@ bgp_juniper:
       local_as:
         as_num: '45000'
       neighbors: 
-      - neighbor_address: 192.168.1.11
-        local_as:
-          as_num: '11000'
-      - neighbor_address: 192.168.1.12
-        local_as:
-          as_num: '12000'
+        - neighbor_address: 192.168.1.11
+          local_as:
+            as_num: '11000'
+        - neighbor_address: 192.168.1.12
+          local_as:
+            as_num: '12000'
       hold_time: 200
 
 # Arista & Cisco (show banner login) & Juniper (show system login message)
