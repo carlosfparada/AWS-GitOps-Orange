@@ -75,6 +75,9 @@
       hashed_password: "{{ ec2_juniper_pass | password_hash('sha512', my_salt) }}"
 
   - debug:
+      msg: "{{ hashed_password }}"
+
+  - debug:
       msg: "{{ ec2_juniper_pass }}"
 
   - name: Set Juniper password
