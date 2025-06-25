@@ -105,7 +105,6 @@
           - "exit"
           - "exit"
           - "exit"
-          - "exit"
         # 'New password:':
         #   - "Admin123$%&"
         # 'Retype new password:':
