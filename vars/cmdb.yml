@@ -78,8 +78,8 @@ bgp:
 # Juniper (show ; show bgp)
 bgp_juniper:
   as_number: "45000"
-  neighbors:
-    neighbor: 
+  groups:
+    neighbors: 
     - neighbor_address: 192.168.1.11
       local_as:
         as_num: '12000'
