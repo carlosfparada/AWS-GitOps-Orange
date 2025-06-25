@@ -68,8 +68,6 @@
   #         - exit
   #   no_log: false # hide passwords on logs
 
-  - ansible.builtin.debug:
-      msg: "A {{ ec2_juniper_pass }} A"
 
   # - ansible.builtin.set_fact:
   #     my_salt: "{{ 99999999 | random | to_uuid | regex_replace('-', '')[:16] }}"
