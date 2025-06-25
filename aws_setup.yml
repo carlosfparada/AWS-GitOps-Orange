@@ -98,8 +98,7 @@
           # - "commit"
           # - "exit"
         'Retype new password:':
-          # - "{{ ec2_juniper_pass }}aA.1"
-          - "JuN!p3R123"
+          - "{{ ec2_juniper_pass }}"
         'New password:':
-          - "JuN!p3R123"
+          - "{{ ec2_juniper_pass }}"
     no_log: false # hide passwords on logs
