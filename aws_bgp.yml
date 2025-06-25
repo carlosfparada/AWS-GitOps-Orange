@@ -78,7 +78,7 @@
   tasks:
     # sh bgp
     - name: Juniper OS Config BGP
-      junipernetworks.junos.junos_global:
+      junipernetworks.junos.junos_bgp_global:
         config: "{{ bgp }}"
         state: replaced
       register: _bgp
