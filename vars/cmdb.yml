@@ -88,7 +88,7 @@ bgp_juniper:
           as_num: '12000'
     hold_time: 200
 
-# Arista & Cisco (show banner login)
+# Arista & Cisco (show banner login) & Juniper (show system login message)
 banner:
   login: "This is my Login Banner, set by Ansible GitOps v1"
 
