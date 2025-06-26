@@ -72,19 +72,6 @@
     ansible_network_os: iosxr
     ansible_command_timeout: 300
   tasks:
-    - name: Cisco Facts
-      #connection: local
-      cisco.iosxr.iosxr_facts:
-        gather_subset:
-          - all
-        gather_network_resources:
-          - all
-      become: true
-      register: _iosxr_facts
-    - name: Debug IOS XR facts
-      debug:
-        var: _iosxr_facts
-
     - name: Create EVPN Config (Cisco) 
       cisco.iosxr.iosxr_config:
         src: iosxr_evpn.j2

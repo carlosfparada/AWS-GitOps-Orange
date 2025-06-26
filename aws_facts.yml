@@ -74,3 +74,26 @@
 
     - debug: 
         var: _junos_facts
+
+
+
+- name: Collect Cisco XR Facts
+  hosts: cisco
+  gather_facts: false
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: iosxr
+    ansible_command_timeout: 300
+  tasks:
+    - name: Cisco XR Facts
+      #connection: local
+      cisco.iosxr.iosxr_facts:
+        gather_subset:
+          - all
+        gather_network_resources:
+          - all
+      become: true
+      register: _iosxr_facts
+    - name: Debug IOS XR facts
+      debug:
+        var: _iosxr_facts
