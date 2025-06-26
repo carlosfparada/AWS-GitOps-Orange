@@ -114,3 +114,34 @@
       junipernetworks.junos.junos_config:
         confirm_commit: true
       become: true
+
+
+- name: Config Cisco XR Banner
+  hosts: ciscoxr
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: iosxr
+    ansible_command_timeout: 300
+  tasks:
+    # sh banner login
+    - name: Create Banner (Cisco XR)
+      cisco.iosxr.iosxr_banner:
+        banner: login
+        text: "{{ banner.login }}"
+        state: present
+      become: true
+      register: _banner
+
+    - name: Cisco XR Debug Banner before
+      debug:
+        var: _banner.before
+
+    - name: Cisco XR Debug Banner command
+      debug:
+        var: _banner.commands
+
+    - name: Cisco XR Debug Banner after
+      debug:
+        var: _banner.after
