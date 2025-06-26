@@ -84,7 +84,7 @@ bgp:
     keepalive: 1000
     holdtime: 200
 
-# Juniper (show ; show bgp)
+# Juniper (show ; show bgp) - NOT WORKING!
 bgp_juniper:
   # as_number: "45000"
   groups:
