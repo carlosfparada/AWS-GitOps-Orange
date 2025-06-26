@@ -72,7 +72,7 @@
     ansible_network_os: iosxr
     ansible_command_timeout: 300
   tasks:
-    - name: Create EVPN Config (Cisco) 
+    - name: Create EVPN Config (Cisco XR) 
       cisco.iosxr.iosxr_config:
         src: iosxr_evpn.j2
         # lines:
