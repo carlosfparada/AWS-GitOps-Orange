@@ -83,7 +83,7 @@ ec2_ciscoxr_volumes:
       delete_on_termination: true
       encrypted: false
 # Flavour 
-ec2_ciscoxr_flavor_name: m5.xlarge
+ec2_ciscoxr_flavor_name: c4.2xlarge
 # Key Pair
 ec2_ciscoxr_key_name: "KeyPair-Virginia"
 # Instance
