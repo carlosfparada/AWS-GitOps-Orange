@@ -252,7 +252,8 @@
 
 - name: Create Cisco XR instance
   amazon.aws.ec2_instance:
-    image_id: "{{ ami_ciscoxr_find.images[-1].image_id | default('') }}"
+    #image_id: "{{ ami_ciscoxr_find.images[-1].image_id | default('') }}"
+    image_id: "{{ ec2_ciscoxr_image_id }}"
     instance_type: "{{ ec2_ciscoxr_flavor_name }}"
     security_group: "{{ ec2_sg_name }}"
     name: "{{ ec2_ciscoxr_instance_name }}"
