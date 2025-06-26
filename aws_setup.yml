@@ -114,13 +114,13 @@
         # ip-10-0-0-197(config)# username ec2-user password xxxx
         # ip-10-0-0-197(config)# exit
         # ip-10-0-0-197# exit
-        'ip-*':
+        '*ios#':
           - configure terminal
-          - aaa new-model
-          - aaa authentication login default local enable
+          - exit
+        '*ios(config)#':
+          - aaa authentication login default local
           - username {{ ec2_ciscoxr_user }} password {{ ec2_ciscoxr_pass }}
-          - hostname Cisco-1
-        'Cisco-*':
+          - hostname CiscoXR-1
           - exit
           - exit
           - exit
