@@ -131,6 +131,61 @@
   ansible.builtin.debug:
     msg: "Cisco: ssh [-i <*.pem>] ec2-user@{{ ec2_cisco_instance.instances[0].public_dns_name }}"
 
+# CISCO XR
+- name: Get Cisco XR AMI by Name
+  amazon.aws.ec2_ami_info:
+    filters:
+      name: "{{ ec2_xr_image_name }}"
+    region: "{{ ec2_vpc_region }}"
+  register: ami_ciscoxr_find
+
+- name: Create Cisco XR instance
+  amazon.aws.ec2_instance:
+    image_id: "{{ ami_ciscoxr_find.images[-1].image_id | default('') }}"
+    instance_type: "{{ ec2_ciscoxr_flavor_name }}"
+    security_group: "{{ ec2_sg_name }}"
+    name: "{{ ec2_ciscoxr_instance_name }}"
+    key_name: "{{ ec2_ciscoxr_key_name }}"
+    region: "{{ ec2_vpc_region }}"
+    vpc_subnet_id: "{{ subnet.subnet.id }}"
+    # network:
+    #   assign_public_ip: true
+    network_interfaces:
+      - assign_public_ip: true
+    volumes: "{{ ec2_ciscoxr_volumes }}"
+    tags:
+      name: "{{ ec2_ciscoxr_instance_name }}"
+    state: running
+  register: ec2_ciscoxr_instance
+
+- name: Create and Attach Cisco XR ENI 1
+  amazon.aws.ec2_eni:
+    name: "{{ ec2_ciscoxr_eni_name1 }}"
+    region: "{{ ec2_vpc_region }}"
+    instance_id: "{{ ec2_ciscoxr_instance.instances[0].instance_id }}"
+    device_index: 1
+    subnet_id: "{{ subnet1.subnet.id }}"
+    #security_groups: "{{ ec2_sg_name }}"
+    delete_on_termination: true
+    attached: true
+    state: present
+
+- name: Create and Attach Cisco XR ENI 2
+  amazon.aws.ec2_eni:
+    name: "{{ ec2_ciscoxr_eni_name2 }}"
+    region: "{{ ec2_vpc_region }}"
+    instance_id: "{{ ec2_ciscoxr_instance.instances[0].instance_id }}"
+    device_index: 2
+    subnet_id: "{{ subnet2.subnet.id }}"
+    #security_groups: "{{ ec2_sg_name }}"
+    delete_on_termination: true
+    attached: true
+    state: present
+
+- name: Print Cisco XR instance details
+  ansible.builtin.debug:
+    msg: "Cisco: ssh [-i <*.pem>] ec2-user@{{ ec2_ciscoxr_instance.instances[0].public_dns_name }}"
+
 # ARISTA
 - name: Get Arista AMI by Name
   amazon.aws.ec2_ami_info:
