@@ -10,7 +10,7 @@
 
 
 - name: Ping managed hosts
-  hosts: cisco, arista 
+  hosts: cisco,arista,juniper,ciscoxr
   connection: local
   gather_facts: no
   tasks:
