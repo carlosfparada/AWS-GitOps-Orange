@@ -38,12 +38,14 @@
     ansible_network_os: junos
     ansible_command_timeout: 300
   tasks:
-    - name: Create DNS Servers (Juniper) 
+    - name: Create EVPN (Juniper) 
       junipernetworks.junos.junos_config:
-        # src: junos_evpn.j2
-        lines:
-          - "set system name-server 8.8.8.8"
+        src: junos_evpn.j2
+        # lines:
+        #   - "set system name-server 8.8.8.8"
       become: true
+      vars: 
+        ip_address: 8.8.8.8
 
     - name: Check Juniper OS correctness of commit configuration
       junipernetworks.junos.junos_config:
@@ -71,11 +73,12 @@
   tasks:
     - name: Create EVPN Config (Cisco) 
       cisco.iosxr.iosxr_config:
-        # src: iosxr_evpn.j2
-        lines:
-          - "ip name-server 8.8.8.8"
+        src: iosxr_evpn.j2
+        # lines:
+        #   - "ip name-server 8.8.8.8"
       become: true
-
+      vars: 
+        ip_address: 8.8.8.8
 
 
     # - name: Save running to startup when modified
