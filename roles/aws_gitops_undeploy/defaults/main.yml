@@ -85,6 +85,7 @@ ec2_ciscoxr_volumes:
       encrypted: false
 # Flavour 
 ec2_ciscoxr_flavor_name: c4.2xlarge
+# ec2_ciscoxr_flavor_name: m5.24xlarge
 # Key Pair
 ec2_ciscoxr_key_name: "KeyPair-Virginia"
 # Instance
