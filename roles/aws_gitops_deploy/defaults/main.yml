@@ -15,6 +15,9 @@ ec2_subnet_cidr2: 10.0.2.0/24
 # Cisco ENIs
 ec2_cisco_eni_name1: ENI_CISCO_GITOPS1
 ec2_cisco_eni_name2: ENI_CISCO_GITOPS2
+# Cisco XR ENIs
+ec2_ciscoxr_eni_name1: ENI_CISCO_GITOPS1
+ec2_ciscoxr_eni_name2: ENI_CISCO_GITOPS2
 # Arista ENIs
 ec2_arista_eni_name1: ENI_ARISTA_GITOPS1
 ec2_arista_eni_name2: ENI_ARISTA_GITOPS2
@@ -68,7 +71,8 @@ ec2_cisco_pass: "{{ ansible_password }}"
 
 # CISCO XR
 # AMI
-ec2_ciscoxr_image_name: "xrv9k_ami_fullk9-x-7.3.3.cco64gbrenum1_20220216102241-2b277af1-02f1-4634-a5ef-b25652df57f2"
+#ec2_ciscoxr_image_name: "xrv9k_ami_fullk9-x-7.3.3.cco64gbrenum1_20220216102241-2b277af1-02f1-4634-a5ef-b25652df57f2"
+ec2_ciscoxr_image_name: "xrv9k*"
 ec2_ciscoxr_image_id: ami-0ec33c2ee35a9554e
 # Volumes
 ec2_ciscoxr_volumes:
