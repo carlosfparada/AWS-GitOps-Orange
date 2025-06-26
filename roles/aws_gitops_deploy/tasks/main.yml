@@ -305,6 +305,14 @@
     delay: 30
     host: "{{ ec2_cisco_instance.instances[0].public_dns_name }}"
 
+- name: Wait until Cisco XR to boot up
+  wait_for:
+    port: 22
+    state: started
+    timeout: 600
+    delay: 30
+    host: "{{ ec2_ciscoxr_instance.instances[0].public_dns_name }}"
+
 - name: Wait until Arista to boot up
   wait_for:
     port: 22
