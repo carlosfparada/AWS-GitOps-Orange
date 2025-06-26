@@ -111,7 +111,7 @@
         "RP/0/RP0/CPU0:ios#":
           - configure terminal
           - exit
-        'ios(config\)#':
+        'ios\(config\)#':
           # - hostname CiscoXR-1
           - aaa authentication login default local
           - username {{ ec2_ciscoxr_user }} password {{ ec2_ciscoxr_pass }}
