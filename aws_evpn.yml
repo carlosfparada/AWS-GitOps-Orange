@@ -40,6 +40,7 @@
   tasks:
     - name: Create DNS Servers (Juniper) 
       junipernetworks.junos.junos_config:
+        # src: junos_evpn.j2
         lines:
           - "set system name-server 8.8.8.8"
       become: true
@@ -70,7 +71,7 @@
   tasks:
     - name: Create EVPN Config (Cisco) 
       cisco.iosxr.iosxr_config:
-        # src: ios_template.j2
+        # src: iosxr_evpn.j2
         lines:
           - "ip name-server 8.8.8.8"
       become: true
