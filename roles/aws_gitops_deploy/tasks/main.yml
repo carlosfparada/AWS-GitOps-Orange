@@ -325,7 +325,7 @@
   wait_for:
     port: 22
     state: started
-    timeout: 1800
+    timeout: 3600
     delay: 30
     host: "{{ ec2_ciscoxr_instance.instances[0].public_dns_name }}"
 
