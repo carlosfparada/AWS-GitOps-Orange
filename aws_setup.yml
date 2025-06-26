@@ -108,19 +108,13 @@
     ansible.builtin.expect:
       command: "ssh -o StrictHostKeyChecking=no -o PubkeyAcceptedKeyTypes=+ssh-rsa -o HostKeyAlgorithms=+ssh-rsa -i /tmp/private-key.pem root@{{ groups['ciscoxr'][0] }}"
       responses:
-        # ip-10-0-0-197# configure terminal
-        # ip-10-0-0-197(config)# aaa new-model
-        # ip-10-0-0-197(config)# aaa authentication login default local enable
-        # ip-10-0-0-197(config)# username ec2-user password xxxx
-        # ip-10-0-0-197(config)# exit
-        # ip-10-0-0-197# exit
-        '*ios#':
+        '*ios*':
           - configure terminal
-          - exit
-        '*ios\(config\)#':
+        # '*ios':
           - aaa authentication login default local
           - username {{ ec2_ciscoxr_user }} password {{ ec2_ciscoxr_pass }}
           - hostname CiscoXR-1
+          - commit
           - exit
           - exit
           - exit
