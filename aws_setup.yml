@@ -106,7 +106,7 @@
 
   - name: Set Cisco XR password
     ansible.builtin.expect:
-      command: "ssh -o StrictHostKeyChecking=no -o PubkeyAcceptedKeyTypes=+ssh-rsa -o HostKeyAlgorithms=+ssh-rsa -i /tmp/private-key.pem ec2-user@{{ groups['ciscoxr'][0] }}"
+      command: "ssh -o StrictHostKeyChecking=no -o PubkeyAcceptedKeyTypes=+ssh-rsa -o HostKeyAlgorithms=+ssh-rsa -i /tmp/private-key.pem root@{{ groups['ciscoxr'][0] }}"
       responses:
         # ip-10-0-0-197# configure terminal
         # ip-10-0-0-197(config)# aaa new-model
