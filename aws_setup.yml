@@ -112,8 +112,7 @@
           - configure terminal
           - exit
         'ios\(config\)#':
-          - hostname CiscoXR-1
-        'CiscoXR\-1\(config\)#':
+          # - hostname CiscoXR-1
           - aaa authentication login default local
           - username {{ ec2_ciscoxr_user }} password {{ ec2_ciscoxr_pass }}
           - commit
