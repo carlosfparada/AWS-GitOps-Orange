@@ -98,7 +98,7 @@
     ansible_command_timeout: 300
   tasks:
     # sh ip address
-    - name: Cisco IOS Sets IP addresses
+    - name: Cisco XR Sets IP addresses
       cisco.iosxr.iosxr_l3_interfaces:
         config: "{{ l3_interfaces_ciscoxr }}"
         state: merged
