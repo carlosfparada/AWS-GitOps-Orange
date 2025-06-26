@@ -9,7 +9,7 @@
       name: utils_hosts_aws
 
 
-- name: Config Arista Banner
+- name: Config Arista DNS Servers
   hosts: arista
   gather_facts: false
   vars_files: vars/cmdb.yml

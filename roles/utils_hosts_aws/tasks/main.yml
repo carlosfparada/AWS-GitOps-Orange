@@ -50,3 +50,15 @@
     name: "{{ node_name }}"
     groups: "juniper"
   when: node_name is defined
+
+- name: Get Cisco XR node
+  set_fact:
+    node_name: "{{ item }}"
+  loop: "{{ groups['all'] }}"
+  when: hostvars[item].tags is defined and hostvars[item].tags.Name | regex_search("^ciscoxr-1$")
+
+- name: Add Cisco XR node to the ciscoxr group
+  add_host:
+    name: "{{ node_name }}"
+    groups: "ciscoxr"
+  when: node_name is defined
