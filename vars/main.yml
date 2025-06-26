@@ -103,7 +103,8 @@ ec2_cisco_pass: "{{ ansible_password }}"
 
 # CISCO XR
 # AMI
-ec2_ciscoxr_image_name: "xrv9k_ami_fullk9-x-7.3.3.cco64gbrenum1_20220216102241-2b277af1-02f1-4634-a5ef-b25652df57f2"
+#ec2_ciscoxr_image_name: "xrv9k_ami_fullk9-x-7.3.3.cco64gbrenum1_20220216102241-2b277af1-02f1-4634-a5ef-b25652df57f2"
+ec2_ciscoxr_image_name: "xrv9k_ami_fullk9*"
 ec2_ciscoxr_image_id: ami-0ec33c2ee35a9554e
 # Volumes
 ec2_ciscoxr_volumes:
