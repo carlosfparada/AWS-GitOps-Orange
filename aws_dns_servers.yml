@@ -140,14 +140,6 @@
       become: true
       register: _dns_servers
 
-    - name: Create Banner (Cisco XR)
-      cisco.iosxr.iosxr_banner:
-        banner: login
-        text: "{{ banner.login }}"
-        state: present
-      become: true
-      register: _banner
-      
     - name: Cisco XR Debug DNS Servers before
       debug:
         var: _dns_servers.before
