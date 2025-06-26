@@ -86,3 +86,38 @@
       junipernetworks.junos.junos_config:
         confirm_commit: true
       become: true
+
+
+- name: Config Cisco XR IPs
+  hosts: ciscoxr
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: iosxr
+    ansible_command_timeout: 300
+  tasks:
+    # sh ip address
+    - name: Cisco IOS Sets IP addresses
+      cisco.iosxr.iosxr_l3_interfaces:
+        config: "{{ l3_interfaces_ciscoxr }}"
+        state: merged
+      register: _l3_interface_ciscoxr
+      become: true
+
+    - name: Cisco XR Debug IPs before
+      debug:
+        var: _l3_interface_ciscoxr.before
+
+    - name: Cisco XR Debug IPs command
+      debug:
+        var: _l3_interface_ciscoxr.commands
+
+    - name: Cisco XR Debug IPs after
+      debug:
+        var: _l3_interface_ciscoxr.after
+
+    - name: Save running to startup when modified
+      cisco.iosxr.iosxr_config:
+        save_when: modified
+      become: true

@@ -61,6 +61,15 @@ l3_interfaces_juniper:
     ipv4:
       - address: 10.15.15.15/24
 
+# Cisco XR (show ip interface brief)
+l3_interfaces_ciscoxr:
+  - name: TenGigE0/0/0/1
+    ipv4:
+    - address: 10.14.14.15/24
+  - name: TenGigE0/0/0/1
+    ipv4:
+      - address: 10.15.15.16/24
+
 # Arista & Cisco (sh running-config | section bgp)
 bgp:
   as_number: '45000'
