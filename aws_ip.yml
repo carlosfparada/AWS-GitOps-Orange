@@ -9,39 +9,39 @@
       name: utils_hosts_aws
 
 
-# - name: Config Cisco IPs
-#   hosts: cisco
-#   gather_facts: false
-#   vars_files: vars/cmdb.yml
-#   vars:
-#     ansible_connection: network_cli
-#     ansible_network_os: ios
-#     ansible_command_timeout: 300
-#   tasks:
-#     # sh ip address
-#     - name: Cisco IOS Sets IP addresses
-#       cisco.ios.ios_l3_interfaces:
-#         config: "{{ l3_interfaces_cisco }}"
-#         state: merged
-#       register: _l3_interface_cisco
-#       become: true
+- name: Config Cisco IPs
+  hosts: cisco
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: ios
+    ansible_command_timeout: 300
+  tasks:
+    # sh ip address
+    - name: Cisco IOS Sets IP addresses
+      cisco.ios.ios_l3_interfaces:
+        config: "{{ l3_interfaces_cisco }}"
+        state: merged
+      register: _l3_interface_cisco
+      become: true
 
-#     - name: Cisco IOS Debug IPs before
-#       debug:
-#         var: _l3_interface_cisco.before
+    - name: Cisco IOS Debug IPs before
+      debug:
+        var: _l3_interface_cisco.before
 
-#     - name: Cisco IOS Debug IPs command
-#       debug:
-#         var: _l3_interface_cisco.commands
+    - name: Cisco IOS Debug IPs command
+      debug:
+        var: _l3_interface_cisco.commands
 
-#     - name: Cisco IOS Debug IPs after
-#       debug:
-#         var: _l3_interface_cisco.after
+    - name: Cisco IOS Debug IPs after
+      debug:
+        var: _l3_interface_cisco.after
 
-#     - name: Save running to startup when modified
-#       cisco.ios.ios_config:
-#         save_when: modified
-#       become: true
+    - name: Save running to startup when modified
+      cisco.ios.ios_config:
+        save_when: modified
+      become: true
 
 
 - name: Config Juniper IPs
