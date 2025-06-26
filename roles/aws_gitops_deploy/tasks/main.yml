@@ -135,7 +135,7 @@
 - name: Get Cisco XR AMI by Name
   amazon.aws.ec2_ami_info:
     filters:
-      name: "{{ ec2_xr_image_name }}"
+      name: "{{ ec2_ciscoxr_image_name }}"
     region: "{{ ec2_vpc_region }}"
   register: ami_ciscoxr_find
 
