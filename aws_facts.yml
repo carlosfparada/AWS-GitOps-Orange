@@ -77,7 +77,7 @@
 
 
 - name: Collect Cisco XR Facts
-  hosts: cisco
+  hosts: ciscoxr
   gather_facts: false
   vars:
     ansible_connection: network_cli
