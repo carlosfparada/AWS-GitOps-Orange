@@ -113,7 +113,7 @@
         # '*ios':
           - aaa authentication login default local
           - username {{ ec2_ciscoxr_user }} password {{ ec2_ciscoxr_pass }}
-          - hostname CiscoXR-1
+          # - hostname CiscoXR-1
           - commit
           - exit
           - exit
