@@ -108,7 +108,7 @@
     ansible.builtin.expect:
       command: "ssh -o StrictHostKeyChecking=no -o PubkeyAcceptedKeyTypes=+ssh-rsa -o HostKeyAlgorithms=+ssh-rsa -i /tmp/private-key.pem root@{{ groups['ciscoxr'][0] }}"
       responses:
-        "RP/0/RP0/CPU0:ios#":
+        "ios#":
           - configure terminal
           - exit
         "ios\(config\)#":
