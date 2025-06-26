@@ -120,3 +120,35 @@
       junipernetworks.junos.junos_config:
         confirm_commit: true
       become: true
+
+
+- name: Config Cisco XR DNS Servers
+  hosts: ciscoxr
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_user: root
+    ansible_connection: network_cli
+    ansible_network_os: iosxr
+    ansible_command_timeout: 300
+  tasks:
+    - name: Create DNS Servers (Cisco XR) 
+      cisco.iosxr.iosxr_config:
+        lines:
+          - "ip name-server {{ item }}"
+      loop: "{{ dns_servers }}"
+      become: true
+      register: _dns_servers
+
+    - name: Cisco XR Debug DNS Servers before
+      debug:
+        var: _dns_servers.before
+
+    - name: Cisco XR Debug DNS Servers command
+      debug:
+        var: _dns_servers.commands
+
+    - name: Cisco XR Debug DNS Servers after
+      debug:
+        var: _dns_servers.after
+
