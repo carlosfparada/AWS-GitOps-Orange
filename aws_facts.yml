@@ -76,7 +76,6 @@
         var: _junos_facts
 
 
-
 - name: Collect Cisco XR Facts
   hosts: cisco
   gather_facts: false
