@@ -132,7 +132,7 @@
     ansible_network_os: iosxr
     ansible_command_timeout: 300
   tasks:
-    # sh running-config | include name-server
+    # sh running-config name-server
     - name: Create DNS Servers (Cisco XR) 
       cisco.iosxr.iosxr_config:
         lines:
@@ -141,6 +141,15 @@
       become: true
       register: _dns_servers
 
+    # sh running config banner
+    - name: Create Banner (Cisco XR)
+      cisco.iosxr.iosxr_banner:
+        banner: login
+        text: "{{ banner.login }}"
+        state: present
+      become: true
+      register: _banner
+      
     - name: Cisco XR Debug DNS Servers before
       debug:
         var: _dns_servers.before
