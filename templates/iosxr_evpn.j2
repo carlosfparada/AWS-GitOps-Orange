@@ -1,1 +1,13 @@
-ip name-server {{ ip_address }}
+interface Loopback0
+ description Cisco XR router
+ ip address 1.1.1.1 255.255.255.255
+
+ip route 2.2.2.2 255.255.255.255 10.0.1.208
+
+router bgp 65001
+ bgp router-id 1.1.1.1
+ neighbor 2.2.2.2 remote-as 65001
+ neighbor 2.2.2.2 update-source Loopback0
+ address-family l2vpn evpn
+  neighbor 2.2.2.2 activate
+  advertise ipv4 unicast
