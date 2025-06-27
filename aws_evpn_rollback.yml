@@ -32,8 +32,13 @@
     ansible_network_os: iosxr
     ansible_command_timeout: 300
   tasks:
+    # - name: Rollback EVPN Config (Cisco XR) 
+    #   cisco.iosxr.iosxr_config:
+    #     lines:
+    #       - "rollback configuration last 1"
+    #   become: true
     - name: Rollback EVPN Config (Cisco XR) 
-      cisco.iosxr.iosxr_config:
-        lines:
+      cisco.iosxr.iosxr_command:
+        commands:
           - "rollback configuration last 1"
       become: true
