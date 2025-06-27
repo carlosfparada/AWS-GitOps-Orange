@@ -21,9 +21,8 @@
     - name: Rollback EVPN (Juniper) 
       junipernetworks.junos.junos_config:
         lines:
-          - "rollback 1"
+          - "rollback"
       become: true
-
 
 - name: Rollback Cisco XR EVPN
   hosts: ciscoxr

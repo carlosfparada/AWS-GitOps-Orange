@@ -28,7 +28,6 @@
       vars: 
         ip_address: 8.8.8.8
 
-
     - name: Save running to startup when modified
       cisco.iosxr.iosxr_config:
         lines:
