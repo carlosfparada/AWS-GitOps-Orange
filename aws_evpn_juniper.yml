@@ -1,0 +1,42 @@
+---
+
+- name: Get nodes from Inventory and add to Groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - include_role: 
+      name: utils_hosts_aws
+
+
+- name: Config Juniper EVPN
+  hosts: juniper
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: netconf
+    ansible_network_os: junos
+    ansible_command_timeout: 300
+  tasks:
+    - name: Create EVPN (Juniper) 
+      junipernetworks.junos.junos_config:
+        src: junos_evpn.j2
+        # lines:
+        #   - "set system name-server 8.8.8.8"
+      become: true
+      vars: 
+        ip_address: 8.8.8.8
+
+    - name: Check Juniper OS correctness of commit configuration
+      junipernetworks.junos.junos_config:
+        check_commit: true
+      become: true
+
+    # - name: Rollback Juniper OS configuration to id 10
+    #   junipernetworks.junos.junos_config:
+    #     rollback: 10
+
+    - name: Confirm previous Juniper OS commit
+      junipernetworks.junos.junos_config:
+        confirm_commit: true
+      become: true

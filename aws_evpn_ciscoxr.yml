@@ -1,0 +1,35 @@
+---
+
+- name: Get nodes from Inventory and add to Groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - include_role: 
+      name: utils_hosts_aws
+
+
+- name: Config Cisco XR EVPN
+  hosts: ciscoxr
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_user: root
+    ansible_connection: network_cli
+    ansible_network_os: iosxr
+    ansible_command_timeout: 300
+  tasks:
+    - name: Create EVPN Config (Cisco XR) 
+      cisco.iosxr.iosxr_config:
+        src: iosxr_evpn.j2
+        # lines:
+        #   - "ip name-server 8.8.8.8"
+      become: true
+      vars: 
+        ip_address: 8.8.8.8
+
+
+    # - name: Save running to startup when modified
+    #   cisco.iosxr.iosxr_config:
+    #     save_when: modified
+    #   become: true

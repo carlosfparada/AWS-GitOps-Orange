@@ -1,0 +1,57 @@
+---
+
+- name: Get nodes from Inventory and add to Groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - include_role: 
+      name: utils_hosts_aws
+
+
+- name: Rollback Juniper EVPN
+  hosts: juniper
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_connection: netconf
+    ansible_network_os: junos
+    ansible_command_timeout: 300
+  tasks:
+    - name: Rollback EVPN (Juniper) 
+      junipernetworks.junos.junos_config:
+        lines:
+          - "rollback 1"
+      become: true
++
+
+    - name: Check Juniper OS correctness of commit configuration
+      junipernetworks.junos.junos_config:
+        check_commit: true
+      become: true
+
+    # - name: Rollback Juniper OS configuration to id 10
+    #   junipernetworks.junos.junos_config:
+    #     rollback: 10
+
+    - name: Confirm previous Juniper OS commit
+      junipernetworks.junos.junos_config:
+        confirm_commit: true
+      become: true
+
+
+- name: Rollback Cisco XR EVPN
+  hosts: ciscoxr
+  gather_facts: false
+  vars_files: vars/cmdb.yml
+  vars:
+    ansible_user: root
+    ansible_connection: network_cli
+    ansible_network_os: iosxr
+    ansible_command_timeout: 300
+  tasks:
+    - name: Rollback EVPN Config (Cisco XR) 
+      cisco.iosxr.iosxr_config:
+        lines:
+          - "rollback configuration last 1"
+      become: true
