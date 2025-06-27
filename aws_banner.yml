@@ -135,14 +135,6 @@
       become: true
       register: _banner
 
-    # # sh running config banner
-    # - name: Create Banner (Cisco XR) 
-    #   cisco.iosxr.iosxr_config:
-    #     lines:
-    #       - "banner login {{ banner.login }}"
-    #   become: true
-    #   register: _banner
-
     - name: Cisco XR Debug Banner before
       debug:
         var: _banner.before
