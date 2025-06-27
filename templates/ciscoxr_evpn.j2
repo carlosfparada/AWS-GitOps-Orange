@@ -34,3 +34,8 @@ interface TenGigE0/0/0/2
  vrf CUSTOMER-A
  ip address 192.168.100.1 255.255.255.0
  no shutdown
+
+router bgp 65001
+ !address-family ipv4 vrf CUSTOMER-A
+ address-family ipv4 unicast
+  redistribute connected
