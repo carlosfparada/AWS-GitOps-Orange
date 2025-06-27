@@ -31,5 +31,6 @@
 
     - name: Save running to startup when modified
       cisco.iosxr.iosxr_config:
-        save_when: modified
+        lines:
+          - "commit"
       become: true
