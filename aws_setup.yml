@@ -91,6 +91,8 @@
           - "set groups aws-default system login user {{ ec2_juniper_user }} authentication encrypted-password {{ hashed_password }}"
           - set security zones security-zone zone interfaces ge-0/0/0
           - set security zones security-zone zone interfaces ge-0/0/1
+          - set groups aws-default security forwarding-options family mpls mode packet-based # router mode
+          - set groups aws-default security forwarding-options family iso mode packet-based # router mode
           - "commit"
           - "commit"
           - "exit"
@@ -103,8 +105,6 @@
           - "exit"
           - "exit"
     no_log: false # hide passwords on logs
-    # - set groups aws-default security forwarding-options family mpls mode packet-based # router mode
-    # - set groups aws-default security forwarding-options family iso mode packet-based # router mode
 
   - name: Set Cisco XR password
     ansible.builtin.expect:
