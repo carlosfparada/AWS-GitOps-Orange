@@ -132,6 +132,7 @@
     ansible_network_os: iosxr
     ansible_command_timeout: 300
   tasks:
+    # sh running-config | include name-server
     - name: Create DNS Servers (Cisco XR) 
       cisco.iosxr.iosxr_config:
         lines:
