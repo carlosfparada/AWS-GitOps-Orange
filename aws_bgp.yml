@@ -111,9 +111,9 @@
 #         check_commit: true
 #       become: true
 
-#     # - name: Rollback Juniper OS configuration to id 10
-#     #   junipernetworks.junos.junos_config:
-#     #     rollback: 10
+    # - name: Rollback Juniper OS to last commit
+    #   junipernetworks.junos.junos_config:
+    #     rollback: 0
 
 #     - name: Confirm previous Juniper OS commit
 #       junipernetworks.junos.junos_config:
