@@ -77,45 +77,45 @@
         save_when: modified
       become: true
 
-- name: Config Juniper BGP
-  hosts: juniper
-  gather_facts: false
-  vars_files: vars/cmdb.yml
-  vars:
-    ansible_connection: netconf
-    ansible_network_os: junos
-    ansible_command_timeout: 300
-  tasks:
-    # sh bgp
-    - name: Juniper OS Config BGP
-      junipernetworks.junos.junos_bgp_global:
-        config: "{{ bgp_juniper }}"
-        state: replaced
-      register: _bgp_juniper
-      become: true
+# - name: Config Juniper BGP
+#   hosts: juniper
+#   gather_facts: false
+#   vars_files: vars/cmdb.yml
+#   vars:
+#     ansible_connection: netconf
+#     ansible_network_os: junos
+#     ansible_command_timeout: 300
+#   tasks:
+#     # sh bgp
+#     - name: Juniper OS Config BGP
+#       junipernetworks.junos.junos_bgp_global:
+#         config: "{{ bgp_juniper }}"
+#         state: replaced
+#       register: _bgp_juniper
+#       become: true
 
-    - name: Juniper OS Debug BGP before
-      debug:
-        var: _bgp_juniper.before
+#     - name: Juniper OS Debug BGP before
+#       debug:
+#         var: _bgp_juniper.before
 
-    - name: Juniper OS Debug BGP command
-      debug:
-        var: _bgp_juniper.commands
+#     - name: Juniper OS Debug BGP command
+#       debug:
+#         var: _bgp_juniper.commands
 
-    - name: Juniper OS Debug BGP after
-      debug:
-        var: _bgp_juniper.after
+#     - name: Juniper OS Debug BGP after
+#       debug:
+#         var: _bgp_juniper.after
 
-    - name: Check Juniper OS correctness of commit configuration
-      junipernetworks.junos.junos_config:
-        check_commit: true
-      become: true
+#     - name: Check Juniper OS correctness of commit configuration
+#       junipernetworks.junos.junos_config:
+#         check_commit: true
+#       become: true
 
-    # - name: Rollback Juniper OS configuration to id 10
-    #   junipernetworks.junos.junos_config:
-    #     rollback: 10
+#     # - name: Rollback Juniper OS configuration to id 10
+#     #   junipernetworks.junos.junos_config:
+#     #     rollback: 10
 
-    - name: Confirm previous Juniper OS commit
-      junipernetworks.junos.junos_config:
-        confirm_commit: true
-      become: true
+#     - name: Confirm previous Juniper OS commit
+#       junipernetworks.junos.junos_config:
+#         confirm_commit: true
+#       become: true
