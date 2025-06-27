@@ -105,7 +105,6 @@
           - "exit"
           - "exit"
           - "exit"
-          - "exit"
     no_log: false # hide passwords on logs
 
   - name: Set Cisco XR password
