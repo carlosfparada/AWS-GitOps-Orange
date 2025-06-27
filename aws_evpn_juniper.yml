@@ -20,7 +20,7 @@
   tasks:
     - name: Create EVPN (Juniper) 
       junipernetworks.junos.junos_config:
-        src: junos_evpn.j2
+        src: juniper_evpn.j2
         # lines:
         #   - "set system name-server 8.8.8.8"
       become: true

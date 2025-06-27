@@ -21,7 +21,7 @@
   tasks:
     - name: Create EVPN Config (Cisco XR) 
       cisco.iosxr.iosxr_config:
-        src: iosxr_evpn.j2
+        src: ciscoxr_evpn.j2
         # lines:
         #   - "ip name-server 8.8.8.8"
       become: true
