@@ -19,15 +19,8 @@
     ansible_command_timeout: 300
   tasks:
     - name: Rollback EVPN (Juniper) 
-      junipernetworks.junos.junos_command:
-        commands:
-          - "rollback"
-      become: true
-    - name: Rollback EVPN (Juniper) 
       junipernetworks.junos.junos_config:
-        lines:
-          - "rollback"
-      become: true
+        rollback: 0
 
 - name: Rollback Cisco XR EVPN
   hosts: ciscoxr
