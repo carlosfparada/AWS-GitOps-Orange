@@ -9,7 +9,7 @@
       name: utils_hosts_aws
 
 
-- name: Ping managed hosts
+- aname: Ping managed hosts
   hosts: cisco,arista,juniper,ciscoxr
   connection: local
   gather_facts: no
