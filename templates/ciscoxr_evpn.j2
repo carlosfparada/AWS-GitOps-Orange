@@ -28,7 +28,9 @@ interface nve1
   ingress-replication protocol bgp
   !associate-vrf
 
-
+interface TenGigE0/0/0/2
+ description Routed interface for CUSTOMER-A
+ no shutdown
 
 router bgp 65001
  !address-family ipv4 vrf CUSTOMER-A
