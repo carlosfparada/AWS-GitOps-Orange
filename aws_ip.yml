@@ -110,8 +110,9 @@
     - name: Cisco XR Enable interfaces
       cisco.iosxr.iosxr_config:
         lines:
+          - "no shutdown"
+        parent:
           - "interface {{ item.name }}"
-          - no shutdown
       loop: "{{ l3_interfaces_ciscoxr }}"
       become: true
       register: _dns_servers
