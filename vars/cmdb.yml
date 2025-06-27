@@ -57,18 +57,18 @@ l3_interfaces_juniper:
   - name: ge-0/0/0
     ipv4:
     - address: 10.0.1.208/24
-  - name: ge-0/0/1
-    ipv4:
-      - address: 10.0.2.239/24
+  # - name: ge-0/0/1
+  #   ipv4:
+  #     - address: 10.0.2.239/24
 
 # Cisco XR (show ip interface brief)
 l3_interfaces_ciscoxr:
   - name: TenGigE0/0/0/1
     ipv4:
     - address: 10.0.1.94/24
-  - name: TenGigE0/0/0/2
-    ipv4:
-      - address: 10.0.2.72/24
+  # - name: TenGigE0/0/0/2
+  #   ipv4:
+  #     - address: 10.0.2.72/24
 
 # Arista & Cisco (sh running-config | section bgp)
 bgp:
