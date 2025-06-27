@@ -9,11 +9,11 @@ set protocols bgp group EVPN-OVERLAY neighbor 1.1.1.1
 
 #set interfaces irb unit 100 family inet address 192.168.100.2/24
 
-set vlans BD-100 vlan-id 100
-#set vlans BD-100 routing-interface irb.100
-set vlans BD-100 interface irb.100
-set vlans BD-100 vxlan vni 100100
-set vlans BD-100 vxlan ingress-node-replication
+#set vlans BD-100 vlan-id 100
+##set vlans BD-100 routing-interface irb.100
+#set vlans BD-100 interface irb.100
+#set vlans BD-100 vxlan vni 100100
+#set vlans BD-100 vxlan ingress-node-replication
 
 set routing-instances EVPN instance-type vrf
 set routing-instances EVPN protocols evpn ip-prefix-routes advertise direct-nexthop
