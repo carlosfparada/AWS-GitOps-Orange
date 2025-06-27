@@ -62,7 +62,7 @@ l3_interfaces_juniper:
       - address: 10.0.2.239/24
   - name: Loopback0
     ipv4:
-      - address: 1.1.1.1/32
+      - address: 2.2.2.2/32
 
 # Cisco XR (show ip interface brief)
 l3_interfaces_ciscoxr:
