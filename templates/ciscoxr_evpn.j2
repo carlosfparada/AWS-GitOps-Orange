@@ -22,21 +22,3 @@ vrf CUSTOMER-A
   !route-target import 65001:100
   !route-target export 65001:100
 
-interface nve1
- no shutdown
- source-interface Loopback0
- member vni 100100
-  ingress-replication protocol bgp
-  !associate-vrf
-
-interface TenGigE0/0/0/2
- description Routed interface for CUSTOMER-A
- !vrf forwarding CUSTOMER-A
- vrf CUSTOMER-A
- ip address 192.168.100.1 255.255.255.0
- no shutdown
-
-router bgp 65001
- !address-family ipv4 vrf CUSTOMER-A
- address-family ipv4 unicast
-  redistribute connected
