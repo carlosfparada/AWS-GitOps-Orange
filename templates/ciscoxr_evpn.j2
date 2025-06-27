@@ -28,12 +28,7 @@ interface nve1
   ingress-replication protocol bgp
   !associate-vrf
 
-interface TenGigE0/0/0/2
- description Routed interface for CUSTOMER-A
- !vrf forwarding CUSTOMER-A
- vrf CUSTOMER-A
- ip address 192.168.100.1 255.255.255.0
- no shutdown
+
 
 router bgp 65001
  !address-family ipv4 vrf CUSTOMER-A
