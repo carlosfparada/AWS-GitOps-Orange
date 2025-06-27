@@ -106,6 +106,16 @@
       register: _l3_interface_ciscoxr
       become: true
 
+    # sh running-config name-server
+    - name: Cisco XR Enable interfaces
+      cisco.iosxr.iosxr_config:
+        lines:
+          - "interface {{ item.name }}"
+          - no shutdown
+      loop: "{{ l3_interfaces_ciscoxr }}"
+      become: true
+      register: _dns_servers
+
     - name: Cisco XR Debug IPs before
       debug:
         var: _l3_interface_ciscoxr.before
