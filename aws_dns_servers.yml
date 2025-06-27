@@ -153,3 +153,8 @@
       debug:
         var: _dns_servers.after
 
+    - name: Save running to startup when modified
+      cisco.iosxr.iosxr_config:
+        lines:
+          - "commit"
+      become: true
