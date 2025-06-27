@@ -20,3 +20,10 @@ vrf CUSTOMER-A
  address-family ipv4 unicast
   !route-target import 65001:100
   !route-target export 65001:100
+
+interface nve1
+ no shutdown
+ source-interface Loopback0
+ member vni 100100
+  ingress-replication protocol bgp
+  !associate-vrf
