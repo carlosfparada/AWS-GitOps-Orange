@@ -14,3 +14,21 @@ set vlans BD-100 vlan-id 100
 set vlans BD-100 interface irb.100
 set vlans BD-100 vxlan vni 100100
 set vlans BD-100 vxlan ingress-node-replication
+
+set routing-instances EVPN instance-type vrf
+set routing-instances EVPN protocols evpn ip-prefix-routes advertise direct-nexthop
+set routing-instances EVPN protocols evpn ip-prefix-routes encapsulation vxlan
+set routing-instances EVPN protocols evpn ip-prefix-routes vni 5000
+set routing-instances EVPN protocols evpn ip-prefix-routes export EVPN-EXP
+set routing-instances EVPN route-distinguisher 2.2.2.2:1
+set routing-instances EVPN vrf-target target:65001:1
+
+set routing-instances CUSTOMER-A instance-type vrf
+set routing-instances CUSTOMER-A interface irb.100
+#set routing-instances CUSTOMER-A route-distinguisher 
+set routing-instances CUSTOMER-A route-distinguisher 65001:1
+
+set protocols bgp local-as 65001
+set protocols bgp group overlay type internal
+set protocols bgp group overlay family evpn signaling
+set protocols bgp group overlay local-as 65001
