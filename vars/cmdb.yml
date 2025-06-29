@@ -24,8 +24,8 @@ l2_interfaces_arista:
   - name: Ethernet2
     mode: access
     access:
-      vlan: 1
-      # vlan: 10
+      # vlan: 1
+      vlan: 10
   - name: Ethernet3
     mode: access
     access:
