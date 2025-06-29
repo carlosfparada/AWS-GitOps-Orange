@@ -45,10 +45,10 @@ l3_interfaces_cisco:
 l3_interfaces_juniper:
   - name: ge-0/0/0
     ipv4:
-    - address: 10.0.1.208/24
-  # - name: ge-0/0/1
-  #   ipv4:
-  #     - address: 10.0.2.239/24
+    - address: 10.0.1.88/24
+  - name: ge-0/0/1
+    ipv4:
+      - address: 10.0.2.225/24
 
 # Cisco XR (show ip interface brief)
 l3_interfaces_ciscoxr:
