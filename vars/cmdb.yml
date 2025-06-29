@@ -54,10 +54,10 @@ l3_interfaces_juniper:
 l3_interfaces_ciscoxr:
   - name: TenGigE0/0/0/1
     ipv4:
-    - address: 10.0.1.94/24
-  # - name: TenGigE0/0/0/2
-  #   ipv4:
-  #     - address: 10.0.2.72/24
+    - address: 10.0.1.143/24
+  - name: TenGigE0/0/0/2
+    ipv4:
+      - address: 10.0.2.124/24
 
 # Arista & Cisco (sh running-config | section bgp)
 bgp:
