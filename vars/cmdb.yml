@@ -110,8 +110,9 @@ evpn:
     address: 10.0.1.143
     loopback: 1.1.1.1
   vpns:
-    vlan: 100
-    juniper_customer_int: x.x.x.x
-    juniper_customer_ip: x.x.x.x
-    cisco_customer_int: x.x.x.x
-    cisco_customer_ip: x.x.x.x
+    - name: CUSTOMER-A
+      vlan: 100
+      juniper_customer_int: x.x.x.x
+      juniper_customer_ip: x.x.x.x
+      cisco_customer_int: x.x.x.x
+      cisco_customer_ip: x.x.x.x
