@@ -100,3 +100,11 @@ dns_servers:
   - 8.8.8.8
   - 8.8.8.9
   # - 8.8.8.10
+
+evpn: 
+  juniper:
+    address: 10.0.1.88
+    loopback: 2.2.2.2
+  ciscoxr: 
+    address: 10.0.1.143
+    loopback: 1.1.1.1
