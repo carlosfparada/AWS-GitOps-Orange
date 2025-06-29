@@ -22,11 +22,7 @@
     - name: Create EVPN Config (Cisco XR) 
       cisco.iosxr.iosxr_config:
         src: ciscoxr_evpn.j2
-        # lines:
-        #   - "ip name-server 8.8.8.8"
       become: true
-      vars: 
-        ip_address: 8.8.8.8
 
     - name: Save running to startup when modified
       cisco.iosxr.iosxr_config:
