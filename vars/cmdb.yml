@@ -34,9 +34,9 @@ l2_interfaces_arista:
 
 # Cisco (show ip interface brief)
 l3_interfaces_cisco:
-  # - name: GigabitEthernet2
-  #   ipv4:
-  #   - address: 10.12.12.12/24
+  - name: GigabitEthernet2
+    ipv4:
+    - address: 10.12.12.12/24
   - name: VirtualPortGroup0
     ipv4:
       - address: 10.13.13.13/24
