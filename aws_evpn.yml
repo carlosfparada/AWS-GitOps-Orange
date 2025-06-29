@@ -41,11 +41,7 @@
     - name: Create EVPN (Juniper) 
       junipernetworks.junos.junos_config:
         src: juniper_evpn.j2
-        # lines:
-        #   - "set system name-server 8.8.8.8"
       become: true
-      vars: 
-        ip_address: 8.8.8.8
 
     - name: Check Juniper OS correctness of commit configuration
       junipernetworks.junos.junos_config:
