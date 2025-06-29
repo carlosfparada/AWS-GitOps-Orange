@@ -32,16 +32,16 @@ l2_interfaces_arista:
       vlan: 1
       # vlan: 20
 
-# Juniper (show ; show interfaces)
-l2_interfaces_juniper:
-  - name: ge-0/0/0
-    access:
-      vlan: 1
-      # vlan: 10
-  - name: ge-0/0/1
-    access:
-      vlan: 1
-      # vlan: 20
+# # Juniper (show ; show interfaces)
+# l2_interfaces_juniper:
+#   - name: ge-0/0/0
+#     access:
+#       vlan: 1
+#       # vlan: 10
+#   - name: ge-0/0/1
+#     access:
+#       vlan: 1
+#       # vlan: 20
 
 # Cisco (show ip interface brief)
 l3_interfaces_cisco:
