@@ -102,9 +102,16 @@ dns_servers:
   # - 8.8.8.10
 
 evpn: 
+  asn: 65001
   juniper:
     address: 10.0.1.88
     loopback: 2.2.2.2
   ciscoxr: 
     address: 10.0.1.143
     loopback: 1.1.1.1
+  vpn:
+    vlan: 100
+    juniper_customer_int: x.x.x.x
+    juniper_customer_ip: x.x.x.x
+    cisco_customer_int: x.x.x.x
+    cisco_customer_ip: x.x.x.x
