@@ -2,7 +2,7 @@ interface Loopback0
  description Cisco XR router
  ip address 1.1.1.1 255.255.255.255
 
-ip route 2.2.2.2 255.255.255.255 {{ l3_interfaces_juniper[0].ipv4[0].address }}
+ip route 2.2.2.2 255.255.255.255 {{ l3_interfaces_juniper[0].ipv4[0].address.split('/')[0] }}
 
 router bgp 65001
  bgp router-id 1.1.1.1
