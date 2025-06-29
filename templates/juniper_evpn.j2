@@ -1,5 +1,5 @@
 set interfaces lo0 unit 0 family inet address 2.2.2.2/32 
-set routing-options static route 1.1.1.1/32 next-hop 10.0.1.94
+set routing-options static route 1.1.1.1/32 next-hop {{ l3_interfaces_ciscoxr[0].ipv4[0].address }}
 
 set protocols bgp group EVPN-OVERLAY type internal
 set protocols bgp group EVPN-OVERLAY peer-as 65001
