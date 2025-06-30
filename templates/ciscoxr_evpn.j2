@@ -9,24 +9,15 @@ router bgp 65001
  neighbor 2.2.2.2 remote-as 65001
  neighbor 2.2.2.2 update-source Loopback0
  address-family l2vpn evpn
-  !neighbor 2.2.2.2 activate
-  !advertise ipv4 unicast
 
-!vrf definition CUSTOMER-A
 vrf CUSTOMER-A
  rd 1.1.1.1:100
-  !vpn id 100:100
-  !vni 100100
- !address-family ipv4 unicast
-  !route-target import 65001:100
-  !route-target export 65001:100
 
 interface nve1
  no shutdown
  source-interface Loopback0
  member vni 100100
   ingress-replication protocol bgp
-  !associate-vrf
 
 interface TenGigE0/0/0/2
  description Routed interface for CUSTOMER-A
