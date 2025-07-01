@@ -112,7 +112,7 @@ evpn:
   vpns:
     - name: CUSTOMER-A
       vlan: 100
-      juniper_customer_int: x.x.x.x
-      juniper_customer_ip: x.x.x.x
-      cisco_customer_int: x.x.x.x
-      cisco_customer_ip: x.x.x.x
+      juniper_customer_int: ge-0/0/1
+      juniper_customer_ip: 192.168.100.2
+      cisco_customer_int: TenGigE0/0/0/2
+      cisco_customer_ip: 192.168.100.1
