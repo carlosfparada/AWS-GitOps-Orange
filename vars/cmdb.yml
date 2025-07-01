@@ -36,10 +36,10 @@ l2_interfaces_arista:
 l3_interfaces_cisco:
   - name: GigabitEthernet2
     ipv4:
-    - address: 10.12.12.12/24
+    - address: 10.12.12.15/24
   - name: VirtualPortGroup0
     ipv4:
-      - address: 10.13.13.13/24
+      - address: 10.13.13.15/24
 
 # Juniper (show ; show interface)
 l3_interfaces_juniper:
@@ -93,12 +93,13 @@ bgp_juniper:
 
 # Arista & Cisco (show banner login) & Juniper (show system login message)
 banner:
-  login: "This is my Login Banner, set by Ansible GitOps v1"
+  login: "This is my Login Banner, set by Ansible GitOps v2"
 
 # Arista & Cisco (show ip name-server) & Juniper (show system name-server)
 dns_servers: 
   - 8.8.8.8
   - 8.8.8.9
+  - 8.8.8.10
   # - 8.8.8.10
 
 evpn: 
