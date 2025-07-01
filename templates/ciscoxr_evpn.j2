@@ -2,7 +2,7 @@ interface Loopback0
  description Cisco XR router
  ip address {{ evpn.ciscoxr.loopback }} 255.255.255.255
 
-ip route {{ evpn.juniper.loopback }} 255.255.255.255 10.0.1.88
+ip route {{ evpn.juniper.loopback }} 255.255.255.255 {{ evpn.juniper.address }}
 
 router bgp {{ evpn.bgp_asn }}
  bgp router-id {{ evpn.ciscoxr.loopback }}
