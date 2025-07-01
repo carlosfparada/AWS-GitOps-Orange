@@ -11,12 +11,12 @@ router bgp {{ evpn.bgp_asn }}
  address-family l2vpn evpn
 
 vrf {{ evpn.vpns.CUSTOMER_A.name }}
- rd {{ evpn.ciscoxr.loopback }}:100
+ rd {{ evpn.ciscoxr.loopback }}:{{ evpn.vpns.CUSTOMER_A.vlan }}
 
 interface nve1
  no shutdown
  source-interface Loopback0
- member vni 100100
+ member vni {{ evpn.vpns.CUSTOMER_A.vlan }}{{ evpn.vpns.CUSTOMER_A.vlan }}
   ingress-replication protocol bgp
 
 interface {{ evpn.vpns.CUSTOMER_A.ciscoxr_customer_int }}
