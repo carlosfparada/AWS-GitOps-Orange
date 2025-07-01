@@ -6,11 +6,11 @@ ip route {{ evpn.juniper.loopback }} 255.255.255.255 {{ evpn.juniper.address }}
 
 router bgp {{ evpn.bgp_asn }}
  bgp router-id {{ evpn.ciscoxr.loopback }}
- neighbor {{ evpn.juniper.loopback }} remote-as 65001
+ neighbor {{ evpn.juniper.loopback }} remote-as {{ evpn.bgp_asn }}
  neighbor {{ evpn.juniper.loopback }} update-source Loopback0
  address-family l2vpn evpn
 
-vrf CUSTOMER-A
+vrf {{ evpn.vpns.CUSTOMER_A.name }}
  rd {{ evpn.ciscoxr.loopback }}:100
 
 interface nve1
@@ -19,9 +19,9 @@ interface nve1
  member vni 100100
   ingress-replication protocol bgp
 
-interface TenGigE0/0/0/2
- description Routed interface for CUSTOMER-A
- ip address 192.168.100.1 255.255.255.0
+interface {{ evpn.vpns.CUSTOMER_A.ciscoxr_customer_int }}
+ description Routed interface for {{ evpn.vpns.CUSTOMER_A.name }}
+ ip address {{ evpn.vpns.CUSTOMER_A.ciscoxr_customer_ip }} 255.255.255.0
  no shutdown
 
 router bgp {{ evpn.bgp_asn }}

@@ -115,5 +115,5 @@ evpn:
       vlan: 100
       juniper_customer_int: ge-0/0/1
       juniper_customer_ip: 192.168.100.2
-      cisco_customer_int: TenGigE0/0/0/2
-      cisco_customer_ip: 192.168.100.1
+      ciscoxr_customer_int: TenGigE0/0/0/2
+      ciscoxr_customer_ip: 192.168.100.1
